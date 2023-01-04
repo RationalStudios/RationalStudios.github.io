@@ -3,6 +3,71 @@
 <html>
 
 <head>
+  <style>
+    .vancecube {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(45deg) rotateY(45deg);
+      animation: spin 10s infinite linear;
+    }
+    .vancecube div {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+    }
+    .vancecube {
+      position: fixed;
+      left: 150px;
+      bottom: 150px;
+    }
+    .front {
+      background-image: url("images/vance.png");
+      transform: translateZ(50px);
+    }
+    .back {
+      background-image: url("images/vance.png");
+      transform: rotateY(180deg) translateZ(50px);
+    }
+    .right {
+      background-image: url("images/vance.png");
+      transform: rotateY(-90deg) translateZ(50px);
+    }
+    .left {
+      background-image: url("images/vance.png");
+      transform: rotateY(90deg) translateZ(50px);
+    }
+    .top {
+      background-image: url("images/vance.png");
+      transform: rotateX(90deg) translateZ(50px);
+    }
+    .bottom {
+      background-image: url("images/vance.png");
+      transform: rotateX(-90deg) translateZ(50px);
+    }
+    @keyframes spin {
+      from {
+        transform: rotateX(0deg) rotateY(0deg);
+      }
+      to {
+        transform: rotateX(360deg) rotateY(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="vancecube">
+    <div class="front"></div>
+    <div class="back"></div>
+    <div class="right"></div>
+    <div class="left"></div>
+    <div class="top"></div>
+    <div class="bottom"></div>
+  </div>
+</body>
+	
+<head>
 
 	<!-- MS Apps-->
 	<meta name="msapplication-TileImage" content="https://QsadeSoft.github.io/images/QsadeSoft.png"
