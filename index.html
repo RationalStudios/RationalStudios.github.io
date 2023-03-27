@@ -170,6 +170,10 @@
         cursor: move;
       }
 
+      .window.show {
+        z-index: 9999;
+      }
+
     </style>
   </head>
   <body>
@@ -265,6 +269,9 @@
           document.onmouseup = null;
           document.onmousemove = null;
         }
+
+        document.querySelector('.window').classList.add('show');
+
 });
       });
     </script>
