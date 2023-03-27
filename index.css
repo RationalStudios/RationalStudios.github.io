@@ -1,44 +1,4 @@
-/* Add a black background color to the top navigation */
-.topnav {
-  background-color: #00000096;
-  overflow: hidden;
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 5px 14px;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #848484;
-  color: white;
-}
-
-/* Social sites and source code icon colors */
-.main-content a.youtube {
-  color: #FF0000;
-}
-
-.main-content a.discord {
-  color: #5865F2;
-}
-
-.main-content a.github {
-  color: #171515;
-}
-
-.main-content a.gitlab {
-  color: #FCA326;
+#start-menu {
+  /* existing styles */
+  background-color: #1C1C1C; /* set to the same color as the taskbar */
 }
