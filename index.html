@@ -168,6 +168,9 @@
         font-size: 14px;
         padding: 5px;
         cursor: move;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
       }
 
       .window.show {
@@ -229,8 +232,13 @@
         // Add the title bar to the window
         var titleBar = document.createElement('div');
         titleBar.className = 'title-bar';
-        titleBar.innerHTML = 'About';
+        titleBar.innerHTML = "<p>About</p><p class='close-btn'>X</p>";
         windowElem.appendChild(titleBar);
+
+		// Create close button function
+		titleBar.querySelector(".close-btn").addEventListener("click", (event) => {
+		  document.body.removeChild(event.target.parentElement.parentElement);
+		});
 
         // Add some content to the window
         var content = document.createElement('div');
