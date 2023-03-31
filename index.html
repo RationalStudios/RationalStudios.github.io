@@ -16,18 +16,7 @@
         -webkit-animation: rainbow 15s ease infinite;
         -moz-animation: rainbow 15s ease infinite;
         animation: rainbow 15s ease infinite;
-      }
-
-      @keyframes rainbow {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
+		filter: sepia(0.2) saturate(1.5) contrast(0.8) brightness(0.9) url(https://cdn.rawgit.com/afeld/969156/raw/0a0a9b9fb02915c87baa3df8408c820d1d66b295/scanlines.svg);
       }
 
       @-webkit-keyframes rainbow {
@@ -71,7 +60,7 @@
       #start-menu {
         display: none;
         position: absolute;
-        top: calc(100vh - 139px);
+        top: calc(100vh - 156px);
         left: 0;
         width: 130px;
         padding: 10px;
@@ -188,6 +177,7 @@
       <div id="start-menu">
         <ul>
           <li id="about-btn">About</li>
+		  <li id="chat-btn">Chat</li>
           <li id="vance-btn">Vance</li>
           <li id="an44-btn">AN44</li>
         </ul>
@@ -277,9 +267,60 @@
 
 });
 
+		// Chat window
+      var chatBtn = document.getElementById('chat-btn');
+      chatBtn.addEventListener('click', function() {
+        // Create the window element
+        var windowElem = document.createElement('div');
+        windowElem.className = 'window';
+        // Add the title bar to the window
+        var titleBar = document.createElement('div');
+        titleBar.className = 'title-bar';
+        titleBar.innerHTML = "<p>Chat</p><p class='close-btn'>X</p>";
+        windowElem.appendChild(titleBar);
+		// Create close button function
+		titleBar.querySelector(".close-btn").addEventListener("click", (event) => {
+		  document.body.removeChild(event.target.parentElement.parentElement);
+		});
+        // Add some content to the window
+        var content = document.createElement('div');
+        content.className = 'content';
+        content.innerHTML = '<p></p>';
+        windowElem.appendChild(content);
+        // Add the window to the document
+        document.body.appendChild(windowElem);
+        // Make the window draggable
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        titleBar.onmousedown = dragMouseDown;
+        function dragMouseDown(e) {
+          e = e || window.event;
+          e.preventDefault();
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          document.onmouseup = closeDragElement;
+          document.onmousemove = elementDrag;
+        }
+        function elementDrag(e) {
+          e = e || window.event;
+          e.preventDefault();
+          pos1 = pos3 - e.clientX;
+          pos2 = pos4 - e.clientY;
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          windowElem.style.top = (windowElem.offsetTop - pos2) + "px";
+          windowElem.style.left = (windowElem.offsetLeft - pos1) + "px";
+        }
+        function closeDragElement() {
+          document.onmouseup = null;
+          document.onmousemove = null;
+        }
+        document.querySelector('.window').classList.add('show');
+
+});
+
 		// Vance window
-      var aboutBtn = document.getElementById('vance-btn');
-      aboutBtn.addEventListener('click', function() {
+      var vanceBtn = document.getElementById('vance-btn');
+      vanceBtn.addEventListener('click', function() {
         // Create the window element
         var windowElem = document.createElement('div');
         windowElem.className = 'window';
@@ -329,8 +370,8 @@
 });
 
 	// Annihilation44  window
-      var aboutBtn = document.getElementById('an44-btn');
-      aboutBtn.addEventListener('click', function() {
+      var an44Btn = document.getElementById('an44-btn');
+      an44Btn.addEventListener('click', function() {
         // Create the window element
         var windowElem = document.createElement('div');
         windowElem.className = 'window';
