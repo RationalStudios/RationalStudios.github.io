@@ -71,12 +71,15 @@
       #start-menu {
         display: none;
         position: absolute;
-        top: calc(100vh - 136px);
+        top: calc(100vh - 139px);
         left: 0;
         width: 130px;
         padding: 10px;
-        background-color: #1C1C1C;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+		/* From https://css.glass */
+		background: rgba(28, 28, 28, 0.87);
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(8.3px);
+		-webkit-backdrop-filter: blur(8.3px);
         z-index: 1;
       }
 
@@ -176,7 +179,7 @@
       .window.show {
         z-index: 9999;
       }
-
+	  
     </style>
   </head>
   <body>
@@ -185,8 +188,8 @@
       <div id="start-menu">
         <ul>
           <li id="about-btn">About</li>
-          <li>Vance</li>
-          <li>AN44</li>
+          <li id="vance-btn">Vance</li>
+          <li id="an44-btn">AN44</li>
         </ul>
       </div>
       <div id="clock">
@@ -222,37 +225,32 @@
 
       startButton.addEventListener('click', function() {
         startMenu.classList.toggle('show-menu');
-
+		
+		// About window
       var aboutBtn = document.getElementById('about-btn');
       aboutBtn.addEventListener('click', function() {
         // Create the window element
         var windowElem = document.createElement('div');
         windowElem.className = 'window';
-
         // Add the title bar to the window
         var titleBar = document.createElement('div');
         titleBar.className = 'title-bar';
         titleBar.innerHTML = "<p>About</p><p class='close-btn'>X</p>";
         windowElem.appendChild(titleBar);
-
 		// Create close button function
 		titleBar.querySelector(".close-btn").addEventListener("click", (event) => {
 		  document.body.removeChild(event.target.parentElement.parentElement);
 		});
-
         // Add some content to the window
         var content = document.createElement('div');
         content.className = 'content';
         content.innerHTML = '<p>This is the About window.</p>';
         windowElem.appendChild(content);
-
         // Add the window to the document
         document.body.appendChild(windowElem);
-
         // Make the window draggable
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
         titleBar.onmousedown = dragMouseDown;
-
         function dragMouseDown(e) {
           e = e || window.event;
           e.preventDefault();
@@ -261,7 +259,6 @@
           document.onmouseup = closeDragElement;
           document.onmousemove = elementDrag;
         }
-
         function elementDrag(e) {
           e = e || window.event;
           e.preventDefault();
@@ -272,15 +269,116 @@
           windowElem.style.top = (windowElem.offsetTop - pos2) + "px";
           windowElem.style.left = (windowElem.offsetLeft - pos1) + "px";
         }
-
         function closeDragElement() {
           document.onmouseup = null;
           document.onmousemove = null;
         }
-
         document.querySelector('.window').classList.add('show');
 
 });
+
+		// Vance window
+      var aboutBtn = document.getElementById('vance-btn');
+      aboutBtn.addEventListener('click', function() {
+        // Create the window element
+        var windowElem = document.createElement('div');
+        windowElem.className = 'window';
+        // Add the title bar to the window
+        var titleBar = document.createElement('div');
+        titleBar.className = 'title-bar';
+        titleBar.innerHTML = "<p>Vance</p><p class='close-btn'>X</p>";
+        windowElem.appendChild(titleBar);
+		// Create close button function
+		titleBar.querySelector(".close-btn").addEventListener("click", (event) => {
+		  document.body.removeChild(event.target.parentElement.parentElement);
+		});
+        // Add some content to the window
+        var content = document.createElement('div');
+        content.className = 'content';
+        content.innerHTML = '<p>Vance Mod.</p>';
+        windowElem.appendChild(content);
+        // Add the window to the document
+        document.body.appendChild(windowElem);
+        // Make the window draggable
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        titleBar.onmousedown = dragMouseDown;
+        function dragMouseDown(e) {
+          e = e || window.event;
+          e.preventDefault();
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          document.onmouseup = closeDragElement;
+          document.onmousemove = elementDrag;
+        }
+        function elementDrag(e) {
+          e = e || window.event;
+          e.preventDefault();
+          pos1 = pos3 - e.clientX;
+          pos2 = pos4 - e.clientY;
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          windowElem.style.top = (windowElem.offsetTop - pos2) + "px";
+          windowElem.style.left = (windowElem.offsetLeft - pos1) + "px";
+        }
+        function closeDragElement() {
+          document.onmouseup = null;
+          document.onmousemove = null;
+        }
+        document.querySelector('.window').classList.add('show');
+
+});
+
+	// Annihilation44  window
+      var aboutBtn = document.getElementById('an44-btn');
+      aboutBtn.addEventListener('click', function() {
+        // Create the window element
+        var windowElem = document.createElement('div');
+        windowElem.className = 'window';
+        // Add the title bar to the window
+        var titleBar = document.createElement('div');
+        titleBar.className = 'title-bar';
+        titleBar.innerHTML = "<p>AN44</p><p class='close-btn'>X</p>";
+        windowElem.appendChild(titleBar);
+		// Create close button function
+		titleBar.querySelector(".close-btn").addEventListener("click", (event) => {
+		  document.body.removeChild(event.target.parentElement.parentElement);
+		});
+        // Add some content to the window
+        var content = document.createElement('div');
+        content.className = 'content';
+        content.innerHTML = '<p>Annihilation44.</p>';
+        windowElem.appendChild(content);
+        // Add the window to the document
+        document.body.appendChild(windowElem);
+        // Make the window draggable
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        titleBar.onmousedown = dragMouseDown;
+        function dragMouseDown(e) {
+          e = e || window.event;
+          e.preventDefault();
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          document.onmouseup = closeDragElement;
+          document.onmousemove = elementDrag;
+        }
+        function elementDrag(e) {
+          e = e || window.event;
+          e.preventDefault();
+          pos1 = pos3 - e.clientX;
+          pos2 = pos4 - e.clientY;
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          windowElem.style.top = (windowElem.offsetTop - pos2) + "px";
+          windowElem.style.left = (windowElem.offsetLeft - pos1) + "px";
+        }
+        function closeDragElement() {
+          document.onmouseup = null;
+          document.onmousemove = null;
+        }
+        document.querySelector('.window').classList.add('show');
+
+});
+
       });
     </script>
   </body>
