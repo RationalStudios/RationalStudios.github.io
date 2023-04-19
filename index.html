@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>QsadeOS</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        background: linear-gradient(-45deg, #C58AFF, #FF6BD6, #C58AFF, #FF6BD6, #C58AFF, #FF6BD6, #C58AFF);
-        background-size: 400% 400%;
-        -webkit-animation: rainbow 15s ease infinite;
-        -moz-animation: rainbow 15s ease infinite;
-        animation: rainbow 15s ease infinite;
-		filter: sepia(0.2) saturate(1.5) contrast(0.8) brightness(0.9) url(https://cdn.rawgit.com/afeld/969156/raw/0a0a9b9fb02915c87baa3df8408c820d1d66b295/scanlines.svg);
-      }
+<head>
+  <title>QsadeSoft</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* center the content vertically */
+      background: linear-gradient(-45deg, #C58AFF, #FF6BD6, #C58AFF, #FF6BD6, #C58AFF, #FF6BD6, #C58AFF);
+      background-size: 400% 400%;
+      -webkit-animation: rainbow 15s ease infinite;
+      -moz-animation: rainbow 15s ease infinite;
+      animation: rainbow 15s ease infinite;
+    }
+     }
 
-      @-webkit-keyframes rainbow {
+    @-webkit-keyframes rainbow {
         0% {
           background-position: 0% 50%;
         }
@@ -43,384 +43,98 @@
         }
       }
 
-      #taskbar {
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        background-color: #1C1C1C;
-        color: white;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        padding: 0 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        margin-top: 20px;
-      }
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background-color: rgba(34, 34, 34, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid #fff;
+    }
 
-      #start-menu {
-        display: none;
-        position: absolute;
-        top: calc(100vh - 156px);
-        left: 0;
-        width: 130px;
-        padding: 10px;
-		/* From https://css.glass */
-		background: rgba(28, 28, 28, 0.87);
-		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-		backdrop-filter: blur(8.3px);
-		-webkit-backdrop-filter: blur(8.3px);
-        z-index: 1;
-      }
+    .navbar ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    
+   .navbar li:not(:last-child) {
+    margin-right: 20px;
+   }
 
-      #start-menu.show-menu {
-        display: block;
-        opacity: 0;
-        animation: fade-in 0.5s forwards;
-      }
+    .navbar li a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #fff;
+      border-radius: 30px;
+      transition: all 0.2s ease;
+    }
 
-      @keyframes fade-in {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
+    .navbar li a:hover {
+      background-color: #ddd;
+      color: #222;
+      transform: scale(1.05);
+    }
 
-      #start {
-        margin-right: auto;
-        cursor: pointer;
-      }
-
-      #clock {
-        margin-left: auto;
-      }
-
-      #clock span {
-        display: inline-block;
-        width: 60px;
-        text-align: center;
-      }
-
-      .overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      .overlay img {
-        display: block;
-        max-width: 100%;
-      }
-      
-      body {
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="8" stroke="white" stroke-width="2" fill="none" /></svg>') 10 10, auto;
-      }
-
-      #start {
-      margin-right: auto;
-      cursor: pointer;
-      position: relative;
-      }
-
-      #start:hover {
-        cursor: none;
-      }
-
-      #start:hover::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        box-shadow: 0 0 5px 2px white;
-      }
-
-      .window {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 400px;
-        height: 300px;
-        background-color: white;
-        border: 1px solid black;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-      }
-
-      .title-bar {
-        height: 30px;
-        background-color: #1C1C1C;
-        color: white;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        padding: 5px;
-        cursor: move;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-      }
-
-      .window.show {
-        z-index: 9999;
-      }
-	  
-    </style>
-  </head>
-  <body>
-    <div id="taskbar">
-      <span id="start">Start</span>
-      <div id="start-menu">
-        <ul>
-          <li id="about-btn">About</li>
-		  <li id="chat-btn">Chat</li>
-          <li id="vance-btn">Vance</li>
-          <li id="an44-btn">AN44</li>
-        </ul>
-      </div>
-      <div id="clock">
-        <span id="hours"></span>
-        <span>:</span>
-        <span id="minutes"></span>
-        <span>:</span>
-        <span id="seconds"></span>
-      </div>
+    .navbar .logo {
+      font-size: 30px;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
+      flex: 1;
+      text-align: left;
+    }
+    
+    /* Add this section for the main content area */
+    .main-content {
+      margin: 0 auto; /* set horizontal margin to auto */
+      max-width: 600px; /* set maximum width of the box */
+      padding: 10px;
+      color: #fff;
+      text-align: center;
+      background-color: rgba(255,255,255,0.5); /* add a semi-transparent background color */
+      border-radius: 20px; /* add rounded corners to the box */
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">QsadeSoft</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Projects</a></li>
+    </ul>
+  </div>
+  
+  <div class="main-content">
+    <div class="box">
+      <!-- Add your content inside this div -->
+      <h1>Welcome to QsadeSoft</h1>
+      <p>We are an online software development group that aims to create software such as games as well as other tools.</p>
+       <img src="QsadeSoft.png" alt="The QsadeSoft Logo">
     </div>
-
-    <div class="overlay">
-      <img src="Background.png" alt="Logo">
-    </div>
-
-    <script>
-      function updateTime() {
-        var now = new Date();
-        var hours = now.getHours();
-        var minutes = now.getMinutes();
-        var seconds = now.getSeconds();
-        hours = hours < 10 ? '0' + hours : hours;
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-        document.getElementById('hours').textContent = hours;
-        document.getElementById('minutes').textContent = minutes;
-        document.getElementById('seconds').textContent = seconds;
-      }
-      setInterval(updateTime, 1000);
-
-      var startButton = document.getElementById('start');
-      var startMenu = document.getElementById('start-menu');
-
-      startButton.addEventListener('click', function() {
-        startMenu.classList.toggle('show-menu');
-		
-		// About window
-      var aboutBtn = document.getElementById('about-btn');
-      aboutBtn.addEventListener('click', function() {
-        // Create the window element
-        var windowElem = document.createElement('div');
-        windowElem.className = 'window';
-        // Add the title bar to the window
-        var titleBar = document.createElement('div');
-        titleBar.className = 'title-bar';
-        titleBar.innerHTML = "<p>About</p><p class='close-btn'>X</p>";
-        windowElem.appendChild(titleBar);
-		// Create close button function
-		titleBar.querySelector(".close-btn").addEventListener("click", (event) => {
-		  document.body.removeChild(event.target.parentElement.parentElement);
-		});
-        // Add some content to the window
-        var content = document.createElement('div');
-        content.className = 'content';
-        content.innerHTML = '<p>This is the About window.</p>';
-        windowElem.appendChild(content);
-        // Add the window to the document
-        document.body.appendChild(windowElem);
-        // Make the window draggable
-        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        titleBar.onmousedown = dragMouseDown;
-        function dragMouseDown(e) {
-          e = e || window.event;
-          e.preventDefault();
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          document.onmouseup = closeDragElement;
-          document.onmousemove = elementDrag;
-        }
-        function elementDrag(e) {
-          e = e || window.event;
-          e.preventDefault();
-          pos1 = pos3 - e.clientX;
-          pos2 = pos4 - e.clientY;
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          windowElem.style.top = (windowElem.offsetTop - pos2) + "px";
-          windowElem.style.left = (windowElem.offsetLeft - pos1) + "px";
-        }
-        function closeDragElement() {
-          document.onmouseup = null;
-          document.onmousemove = null;
-        }
-        document.querySelector('.window').classList.add('show');
-
-});
-
-		// Chat window
-      var chatBtn = document.getElementById('chat-btn');
-      chatBtn.addEventListener('click', function() {
-        // Create the window element
-        var windowElem = document.createElement('div');
-        windowElem.className = 'window';
-        // Add the title bar to the window
-        var titleBar = document.createElement('div');
-        titleBar.className = 'title-bar';
-        titleBar.innerHTML = "<p>Chat</p><p class='close-btn'>X</p>";
-        windowElem.appendChild(titleBar);
-		// Create close button function
-		titleBar.querySelector(".close-btn").addEventListener("click", (event) => {
-		  document.body.removeChild(event.target.parentElement.parentElement);
-		});
-        // Add some content to the window
-        var content = document.createElement('div');
-        content.className = 'content';
-        content.innerHTML = '<p></p>';
-        windowElem.appendChild(content);
-        // Add the window to the document
-        document.body.appendChild(windowElem);
-        // Make the window draggable
-        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        titleBar.onmousedown = dragMouseDown;
-        function dragMouseDown(e) {
-          e = e || window.event;
-          e.preventDefault();
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          document.onmouseup = closeDragElement;
-          document.onmousemove = elementDrag;
-        }
-        function elementDrag(e) {
-          e = e || window.event;
-          e.preventDefault();
-          pos1 = pos3 - e.clientX;
-          pos2 = pos4 - e.clientY;
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          windowElem.style.top = (windowElem.offsetTop - pos2) + "px";
-          windowElem.style.left = (windowElem.offsetLeft - pos1) + "px";
-        }
-        function closeDragElement() {
-          document.onmouseup = null;
-          document.onmousemove = null;
-        }
-        document.querySelector('.window').classList.add('show');
-
-});
-
-		// Vance window
-      var vanceBtn = document.getElementById('vance-btn');
-      vanceBtn.addEventListener('click', function() {
-        // Create the window element
-        var windowElem = document.createElement('div');
-        windowElem.className = 'window';
-        // Add the title bar to the window
-        var titleBar = document.createElement('div');
-        titleBar.className = 'title-bar';
-        titleBar.innerHTML = "<p>Vance</p><p class='close-btn'>X</p>";
-        windowElem.appendChild(titleBar);
-		// Create close button function
-		titleBar.querySelector(".close-btn").addEventListener("click", (event) => {
-		  document.body.removeChild(event.target.parentElement.parentElement);
-		});
-        // Add some content to the window
-        var content = document.createElement('div');
-        content.className = 'content';
-        content.innerHTML = '<p>Vance Mod.</p>';
-        windowElem.appendChild(content);
-        // Add the window to the document
-        document.body.appendChild(windowElem);
-        // Make the window draggable
-        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        titleBar.onmousedown = dragMouseDown;
-        function dragMouseDown(e) {
-          e = e || window.event;
-          e.preventDefault();
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          document.onmouseup = closeDragElement;
-          document.onmousemove = elementDrag;
-        }
-        function elementDrag(e) {
-          e = e || window.event;
-          e.preventDefault();
-          pos1 = pos3 - e.clientX;
-          pos2 = pos4 - e.clientY;
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          windowElem.style.top = (windowElem.offsetTop - pos2) + "px";
-          windowElem.style.left = (windowElem.offsetLeft - pos1) + "px";
-        }
-        function closeDragElement() {
-          document.onmouseup = null;
-          document.onmousemove = null;
-        }
-        document.querySelector('.window').classList.add('show');
-
-});
-
-	// Annihilation44  window
-      var an44Btn = document.getElementById('an44-btn');
-      an44Btn.addEventListener('click', function() {
-        // Create the window element
-        var windowElem = document.createElement('div');
-        windowElem.className = 'window';
-        // Add the title bar to the window
-        var titleBar = document.createElement('div');
-        titleBar.className = 'title-bar';
-        titleBar.innerHTML = "<p>AN44</p><p class='close-btn'>X</p>";
-        windowElem.appendChild(titleBar);
-		// Create close button function
-		titleBar.querySelector(".close-btn").addEventListener("click", (event) => {
-		  document.body.removeChild(event.target.parentElement.parentElement);
-		});
-        // Add some content to the window
-        var content = document.createElement('div');
-        content.className = 'content';
-        content.innerHTML = '<p>Annihilation44.</p>';
-        windowElem.appendChild(content);
-        // Add the window to the document
-        document.body.appendChild(windowElem);
-        // Make the window draggable
-        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        titleBar.onmousedown = dragMouseDown;
-        function dragMouseDown(e) {
-          e = e || window.event;
-          e.preventDefault();
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          document.onmouseup = closeDragElement;
-          document.onmousemove = elementDrag;
-        }
-        function elementDrag(e) {
-          e = e || window.event;
-          e.preventDefault();
-          pos1 = pos3 - e.clientX;
-          pos2 = pos4 - e.clientY;
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          windowElem.style.top = (windowElem.offsetTop - pos2) + "px";
-          windowElem.style.left = (windowElem.offsetLeft - pos1) + "px";
-        }
-        function closeDragElement() {
-          document.onmouseup = null;
-          document.onmousemove = null;
-        }
-        document.querySelector('.window').classList.add('show');
-
-});
-
-      });
-    </script>
-  </body>
-</html>
+  </div>
+  <style>
+    /* Add styles for the box */
+    .box {
+      background-color: rgb(50, 50, 50);
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 600px;
+      text-align: center;
+    }
+  </style>
+</body>
