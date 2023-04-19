@@ -1,139 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>QsadeSoft</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center; /* center the content vertically */
-      background: linear-gradient(-45deg, #C58AFF, #FF6BD6, #C58AFF, #FF6BD6, #C58AFF, #FF6BD6, #C58AFF);
-      background-size: 400% 400%;
-      -webkit-animation: rainbow 15s ease infinite;
-      -moz-animation: rainbow 15s ease infinite;
-      animation: rainbow 15s ease infinite;
-    }
-     }
+	<title>Welcome to QsadeSoft</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #F8F8F8;
+		}
 
-    @-webkit-keyframes rainbow {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
+		h1 {
+			color: #333333;
+			text-align: center;
+			margin-top: 50px;
+		}
 
-      @-moz-keyframes rainbow {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
+		.box {
+			width: 400px;
+			height: 400px;
+			background-color: #FFFFFF;
+			margin: 0 auto;
+			margin-top: 50px;
+			padding: 20px;
+			box-shadow: 0px 0px 10px #BBBBBB;
+			text-align: center;
+			position: relative;
+		}
 
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
-      background-color: rgba(34, 34, 34, 0.8);
-      backdrop-filter: blur(10px);
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      border-bottom: 2px solid #fff;
-    }
+		.box img {
+			max-width: 100%;
+			max-height: 100%;
+			display: block;
+			margin: 0 auto;
+		}
 
-    .navbar ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
-    
-   .navbar li:not(:last-child) {
-    margin-right: 20px;
-   }
+		.box h2 {
+			font-size: 28px;
+			margin-top: 30px;
+			margin-bottom: 20px;
+		}
 
-    .navbar li a {
-      display: block;
-      padding: 10px 15px;
-      text-decoration: none;
-      color: #fff;
-      border-radius: 30px;
-      transition: all 0.2s ease;
-    }
+		.box p {
+			font-size: 18px;
+			line-height: 1.5;
+			margin-bottom: 30px;
+		}
 
-    .navbar li a:hover {
-      background-color: #ddd;
-      color: #222;
-      transform: scale(1.05);
-    }
+		@font-face {
+			font-family: 'Blankenburg';
+			src: url('Blankenburg.ttf');
+		}
 
-    .navbar .logo {
-      font-size: 30px;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: bold;
-      flex: 1;
-      text-align: left;
-    }
-    
-    /* Add this section for the main content area */
-    .main-content {
-      margin: 0 auto; /* set horizontal margin to auto */
-      max-width: 600px; /* set maximum width of the box */
-      padding: 10px;
-      color: #fff;
-      text-align: center;
-      background-color: rgba(255,255,255,0.5); /* add a semi-transparent background color */
-      border-radius: 20px; /* add rounded corners to the box */
-    }
-    
-  </style>
+		.box h2 span {
+			font-family: 'Blankenburg', serif;
+		}
+	</style>
 </head>
 <body>
-  <div class="navbar">
-    <div class="logo">QsadeSoft</div>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Projects</a></li>
-    </ul>
-  </div>
-  
-  <div class="main-content">
-    <div class="box">
-      <h1>Welcome to QsadeSoft</h1>
-      <p>We are an online software development group that aims to create software such as games as well as other tools.</p>
-       <img src="QsadeSoft.png" alt="The QsadeSoft Logo" style="display: block; margin: 0 auto; max-width: 100%;">
-    </div>
-  </div>
-  <style>
-    /* Add styles for the box */
-    .box {
-      background-color: rgb(50, 50, 50);
-      border-radius: 10px;
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-      padding: 20px;
-      margin: 0 auto;
-      max-width: 600px;
-      text-align: center;
-    }
-  </style>
+	<h1>Welcome to QsadeSoft</h1>
+	<div class="box">
+		<img src="QsadeSoft.png" alt="The QsadeSoft Logo">
+		<h2><span>QsadeSoft</span></h2>
+		<p>We are a software development company that specializes in creating custom software solutions for businesses of all sizes. Our team of experienced developers can help you streamline your processes and increase your productivity. Contact us today to learn more.</p>
+	</div>
 </body>
+</html>
