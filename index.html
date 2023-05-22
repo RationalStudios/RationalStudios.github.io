@@ -8,6 +8,7 @@
   <title>QsadeSoft</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <style>
     body {
       margin: 0;
@@ -94,32 +95,31 @@
       z-index: 1;
     }
     
-    .box {
-      width: 200px;
-      height: 200px;
-      background-color: #ddd;
-      border-radius: 10px;
+    /* Add styles for the swiper container */
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    
+    /* Add styles for the swiper wrapper */
+    .swiper-wrapper {
       display: flex;
-      justify-content: center;
       align-items: center;
-      position: absolute;
-      cursor: grab;
-      user-select: none;
-      transition: transform 0.3s ease;
+      justify-content: center;
+      height: 100%;
     }
-
-    .center-box {
-      background-color: #a0d3f8;
-    }
-
-    #box1 {
-      top: 50px;
-      left: 50px;
-    }
-
-    #box2 {
-      top: 50px;
-      right: 50px;
+    
+    /* Add styles for each card */
+    .swiper-slide {
+      background-color: rgba(50, 50, 50, 0.8);
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      color: #fff;
+      max-width: 600px;
+      text-align: center;
+      border-bottom: 4px solid #242324;
+      margin: 0 auto;
     }
     
   </style>
@@ -134,42 +134,36 @@
   </div>
   
   <div class="main-content">
-    <div class="box center-box">Center Box</div>
-    <div class="box" id="box1">Box 1</div>
-    <div class="box" id="box2">Box 2</div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <h1>Welcome to QsadeSoft</h1>
+          <p>We are an online software development group that aims to create software such as games as well as other tools.</p>
+          <img src="QsadeSoft.png" alt="The QsadeSoft Logo" style="display: block; margin: 0 auto; max-width: 100%;">
+          <h4>Join Our Discord Community!</h4>
+          <a href="https://discord.gg/rrd4zxXzbK" target="_blank">
+            <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Join our Discord server" style="display: block; margin: 0 auto; max-width: 10%;">
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <!-- Content for the second card -->
+        </div>
+        <div class="swiper-slide">
+          <!-- Content for the third card -->
+        </div>
+      </div>
+    </div>
   </div>
 
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
-    let activeBox = null;
-    let initialX = 0;
-    let currentX = 0;
-
-    document.addEventListener('mousedown', startDragging);
-    document.addEventListener('mouseup', stopDragging);
-    document.addEventListener('mousemove', e => {
-      currentX = e.clientX;
-
-      if (activeBox) {
-        const offsetX = currentX - initialX;
-        const transformX = offsetX * 0.2;
-
-        activeBox.style.transform = `translateX(${transformX}px)`;
-      }
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      spaceBetween: 30,
+      grabCursor: true,
+      loop: true
     });
-
-    function startDragging(e) {
-      activeBox = e.target;
-      initialX = e.clientX;
-      activeBox.style.cursor = 'grabbing';
-    }
-
-    function stopDragging() {
-      if (activeBox) {
-        activeBox.style.cursor = 'grab';
-        activeBox.style.transform = 'none';
-        activeBox = null;
-      }
-    }
   </script>
 </body>
 </html>
