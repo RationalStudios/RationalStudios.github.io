@@ -16,10 +16,11 @@
       font-family: Arial, sans-serif;
       height: 100vh;
       display: flex;
-      justify-content: center; /* center the content horizontally */
-      align-items: center; /* center the content vertically */
+      flex-direction: column;
+      justify-content: center; /* center the content vertically */
       background: rgb(56,56,56);
       background: linear-gradient(90deg, rgba(56,56,56,1) 0%, rgba(122,122,122,1) 35%);
+      margin-top: 70px;
     }
     
     @font-face {
@@ -81,6 +82,10 @@
     
     /* Add this section for the main content area */
     .main-content {
+      position: absolute;
+      top: 70px; /* Add a top margin equal to the height of the navbar */
+      left: 50%;
+      transform: translate(-50%, 0);
       max-width: 600px; /* set maximum width of the box */
       padding: 10px;
       text-align: center;
@@ -99,6 +104,7 @@
       align-items: center;
       justify-content: center;
       height: 100%;
+      overflow: hidden; /* Hide the overflowing cards */
     }
     
     /* Add styles for each swiper slide */
@@ -187,18 +193,14 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
     var swiper = new Swiper('.swiper-container', {
-      slidesPerView: 'auto',
-      centeredSlides: true,
+      direction: 'vertical',
+      slidesPerView: 1,
       spaceBetween: 30,
-      grabCursor: true,
-      loop: true,
+      mousewheel: true,
+      loop: true, // Enable infinite loop
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
-      },
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
       },
     });
   </script>
