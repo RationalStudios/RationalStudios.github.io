@@ -19,7 +19,6 @@
       justify-content: center; /* center the content vertically */
       background: rgb(56,56,56);
       background: linear-gradient(90deg, rgba(56,56,56,1) 0%, rgba(122,122,122,1) 35%);
-      background-size: 400% 400%;
       margin-top: 70px;
     }
     
@@ -82,14 +81,45 @@
     
     /* Add this section for the main content area */
     .main-content {
-      margin-top: 80px;
-      margin: 0 auto; /* set horizontal margin to auto */
+      position: absolute;
+      top: 70px; /* Add a top margin equal to the height of the navbar */
+      left: 50%;
+      transform: translate(-50%, 0);
       max-width: 600px; /* set maximum width of the box */
       padding: 10px;
       color: #fff;
       text-align: center;
       background-color: rgba(255,255,255,0.5); /* add a semi-transparent background color */
       border-radius: 20px; /* add rounded corners to the box */
+      z-index: 1;
+    }
+    
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: #ddd;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      cursor: grab;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+
+    .center-box {
+      background-color: #a0d3f8;
+    }
+
+    #box1 {
+      top: 50px;
+      left: 50px;
+    }
+
+    #box2 {
+      top: 50px;
+      right: 50px;
     }
     
   </style>
@@ -104,27 +134,42 @@
   </div>
   
   <div class="main-content">
-    <div class="box">
-      <!-- Add content inside this div -->
-      <h1>Welcome to QsadeSoft</h1>
-      <p>We are an online software development group that aims to create software such as games as well as other tools.</p>
-      <img src="QsadeSoft.png" alt="The QsadeSoft Logo" style="display: block; margin: 0 auto; max-width: 100%;">
-      <h4>Join Our Discord Community!</h4>
-      <a href="https://discord.gg/rrd4zxXzbK" target="_blank">
-      <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Join our Discord server" style="display: block; margin: 0 auto; max-width: 10%;">
-    </div>
+    <div class="box center-box">Center Box</div>
+    <div class="box" id="box1">Box 1</div>
+    <div class="box" id="box2">Box 2</div>
   </div>
-  <style>
-    /* Add styles for the box */
-    .box {
-      background-color: rgb(50, 50, 50);
-      border-radius: 10px;
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-      padding: 20px;
-      margin: 0 auto;
-      max-width: 600px;
-      text-align: center;
-      border-bottom: 4px solid #242324;
+
+  <script>
+    let activeBox = null;
+    let initialX = 0;
+    let currentX = 0;
+
+    document.addEventListener('mousedown', startDragging);
+    document.addEventListener('mouseup', stopDragging);
+    document.addEventListener('mousemove', e => {
+      currentX = e.clientX;
+
+      if (activeBox) {
+        const offsetX = currentX - initialX;
+        const transformX = offsetX * 0.2;
+
+        activeBox.style.transform = `translateX(${transformX}px)`;
+      }
+    });
+
+    function startDragging(e) {
+      activeBox = e.target;
+      initialX = e.clientX;
+      activeBox.style.cursor = 'grabbing';
     }
-  </style>
+
+    function stopDragging() {
+      if (activeBox) {
+        activeBox.style.cursor = 'grab';
+        activeBox.style.transform = 'none';
+        activeBox = null;
+      }
+    }
+  </script>
 </body>
+</html>
