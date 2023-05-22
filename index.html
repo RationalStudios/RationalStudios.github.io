@@ -20,7 +20,6 @@
       justify-content: center; /* center the content vertically */
       background: rgb(56,56,56);
       background: linear-gradient(90deg, rgba(56,56,56,1) 0%, rgba(122,122,122,1) 35%);
-      margin-top: 70px;
     }
     
     @font-face {
@@ -83,9 +82,9 @@
     /* Add this section for the main content area */
     .main-content {
       position: absolute;
-      top: 70px; /* Add a top margin equal to the height of the navbar */
+      top: 50%; /* Add a top margin equal to half the height of the box */
       left: 50%;
-      transform: translate(-50%, 0);
+      transform: translate(-50%, -50%);
       max-width: 600px; /* set maximum width of the box */
       padding: 10px;
       text-align: center;
@@ -108,10 +107,6 @@
     
     /* Add styles for each swiper slide */
     .swiper-slide {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       background-color: rgb(50, 50, 50);
       border-radius: 10px;
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
@@ -119,7 +114,6 @@
       text-align: center;
       border-bottom: 4px solid #242324;
       animation: slideAnimation 1s ease-in-out;
-      margin: 0 auto; /* center horizontally */
     }
     
     .swiper-slide h1,
@@ -188,11 +182,6 @@
           <h1>Third Card</h1>
           <p>This is the content for the third card.</p>
         </div>
-        <div class="swiper-slide">
-          <!-- Content for the fourth card -->
-          <h1>Fourth Card</h1>
-          <p>This is the content for the fourth card.</p>
-        </div>
       </div>
       <!-- Add pagination -->
       <div class="swiper-pagination"></div>
@@ -204,16 +193,9 @@
     var swiper = new Swiper('.swiper-container', {
       slidesPerView: 'auto',
       centeredSlides: true,
-      spaceBetween: 30,
-      grabCursor: true,
-      loop: true,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
-      },
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
       },
     });
   </script>
