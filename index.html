@@ -115,6 +115,7 @@
       text-align: center;
       border-bottom: 4px solid #242324;
       animation: slideAnimation 1s ease-in-out;
+      margin: 0 auto; /* center the slide horizontally */
     }
     
     .swiper-slide h1,
@@ -183,16 +184,6 @@
           <h1>Third Card</h1>
           <p>This is the content for the third card.</p>
         </div>
-        <div class="swiper-slide">
-          <!-- Content for the first card -->
-          <h1>QsadeSoft</h1>
-          <p>We are an online software development group that aims to create software such as games as well as other tools.</p>
-          <img src="QsadeSoft.png" alt="The QsadeSoft Logo" style="display: block; margin: 0 auto; max-width: 100%;">
-          <h4>Join Our Discord Community!</h4>
-          <a href="https://discord.gg/rrd4zxXzbK" target="_blank">
-            <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Join our Discord server" style="display: block; margin: 0 auto; max-width: 10%;">
-          </a>
-        </div>
       </div>
       <!-- Add pagination -->
       <div class="swiper-pagination"></div>
@@ -205,11 +196,15 @@
       slidesPerView: 'auto',
       centeredSlides: true,
       spaceBetween: 30,
+      grabCursor: true,
       loop: true,
-      loopAdditionalSlides: 1,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
+      },
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
       },
     });
   </script>
