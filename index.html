@@ -114,6 +114,7 @@
       padding: 20px;
       text-align: center;
       border-bottom: 4px solid #242324;
+      animation: slideAnimation 1s ease-in-out;
     }
     
     .swiper-slide h1,
@@ -138,6 +139,17 @@
       max-width: 10%;
     }
     
+    /* Keyframes for the slide animation */
+    @keyframes slideAnimation {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
@@ -172,6 +184,8 @@
           <p>This is the content for the third card.</p>
         </div>
       </div>
+      <!-- Add pagination -->
+      <div class="swiper-pagination"></div>
     </div>
   </div>
 
@@ -182,7 +196,15 @@
       centeredSlides: true,
       spaceBetween: 30,
       grabCursor: true,
-      loop: true
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
     });
   </script>
 </body>
