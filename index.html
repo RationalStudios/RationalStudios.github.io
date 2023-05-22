@@ -16,8 +16,8 @@
       font-family: Arial, sans-serif;
       height: 100vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center; /* center the content vertically */
+      justify-content: center; /* center the content horizontally */
+      align-items: center; /* center the content vertically */
       background: rgb(56,56,56);
       background: linear-gradient(90deg, rgba(56,56,56,1) 0%, rgba(122,122,122,1) 35%);
     }
@@ -81,10 +81,6 @@
     
     /* Add this section for the main content area */
     .main-content {
-      position: absolute;
-      top: 50%; /* Add a top margin equal to half the height of the box */
-      left: 50%;
-      transform: translate(-50%, -50%);
       max-width: 600px; /* set maximum width of the box */
       padding: 10px;
       text-align: center;
@@ -193,9 +189,16 @@
     var swiper = new Swiper('.swiper-container', {
       slidesPerView: 'auto',
       centeredSlides: true,
+      spaceBetween: 30,
+      grabCursor: true,
+      loop: true,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
       },
     });
   </script>
