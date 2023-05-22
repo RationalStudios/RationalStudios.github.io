@@ -104,7 +104,6 @@
       align-items: center;
       justify-content: center;
       height: 100%;
-      overflow: hidden; /* Hide the overflowing cards */
     }
     
     /* Add styles for each swiper slide */
@@ -184,23 +183,30 @@
           <h1>Third Card</h1>
           <p>This is the content for the third card.</p>
         </div>
+        <div class="swiper-slide">
+          <!-- Content for the fourth card -->
+          <h1>Fourth Card</h1>
+          <p>This is the content for the fourth card.</p>
+        </div>
+        <div class="swiper-slide">
+          <!-- Content for the fifth card -->
+          <h1>Fifth Card</h1>
+          <p>This is the content for the fifth card.</p>
+        </div>
       </div>
-      <!-- Add pagination -->
-      <div class="swiper-pagination"></div>
     </div>
   </div>
-
+  
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
-    var swiper = new Swiper('.swiper-container', {
-      direction: 'vertical',
-      slidesPerView: 1,
+    const swiper = new Swiper('.swiper-container', {
+      slidesPerView: 'auto',
+      centeredSlides: true,
       spaceBetween: 30,
-      mousewheel: true,
       loop: true, // Enable infinite loop
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
     });
   </script>
