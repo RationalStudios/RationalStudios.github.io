@@ -108,6 +108,10 @@
     
     /* Add styles for each swiper slide */
     .swiper-slide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       background-color: rgb(50, 50, 50);
       border-radius: 10px;
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
@@ -115,7 +119,7 @@
       text-align: center;
       border-bottom: 4px solid #242324;
       animation: slideAnimation 1s ease-in-out;
-      margin: 0 auto; /* center the slide horizontally */
+      margin: 0 auto; /* center horizontally */
     }
     
     .swiper-slide h1,
@@ -183,6 +187,11 @@
           <!-- Content for the third card -->
           <h1>Third Card</h1>
           <p>This is the content for the third card.</p>
+        </div>
+        <div class="swiper-slide">
+          <!-- Content for the fourth card -->
+          <h1>Fourth Card</h1>
+          <p>This is the content for the fourth card.</p>
         </div>
       </div>
       <!-- Add pagination -->
