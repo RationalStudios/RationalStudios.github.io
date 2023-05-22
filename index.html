@@ -88,10 +88,7 @@
       transform: translate(-50%, 0);
       max-width: 600px; /* set maximum width of the box */
       padding: 10px;
-      color: #fff;
       text-align: center;
-      background-color: rgba(255,255,255,0.5); /* add a semi-transparent background color */
-      border-radius: 20px; /* add rounded corners to the box */
       z-index: 1;
     }
     
@@ -99,6 +96,9 @@
     .swiper-container {
       width: 100%;
       height: 100%;
+      background-color: rgba(255, 255, 255, 0.5); /* add a semi-transparent white background */
+      border-radius: 20px; /* add rounded corners to the box */
+      overflow: hidden; /* hide overflow to prevent scrollbar */
     }
     
     /* Add styles for the swiper wrapper */
