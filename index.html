@@ -96,6 +96,7 @@
     .swiper-container {
       width: 100%;
       height: 100%;
+      perspective: 1000px; /* Add 3D perspective */
     }
     
     /* Add styles for the swiper wrapper */
@@ -115,6 +116,11 @@
       text-align: center;
       border-bottom: 4px solid #242324;
       animation: slideAnimation 1s ease-in-out;
+      transition: transform 0.3s ease-in-out; /* Add transition for 3D effect */
+    }
+    
+    .swiper-slide:hover {
+      transform: scale(1.05) rotateX(10deg) rotateY(10deg); /* Apply 3D effect on hover */
     }
     
     .swiper-slide h1,
@@ -183,27 +189,23 @@
           <h1>Third Card</h1>
           <p>This is the content for the third card.</p>
         </div>
-        <div class="swiper-slide">
-          <!-- Content for the fourth card -->
-          <h1>Fourth Card</h1>
-          <p>This is the content for the fourth card.</p>
-        </div>
-        <div class="swiper-slide">
-          <!-- Content for the fifth card -->
-          <h1>Fifth Card</h1>
-          <p>This is the content for the fifth card.</p>
-        </div>
+        <!-- Add more swiper-slide divs for additional cards -->
       </div>
     </div>
   </div>
-  
+
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
-    const swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('.swiper-container', {
+      direction: 'horizontal',
       slidesPerView: 'auto',
       centeredSlides: true,
-      spaceBetween: 30,
-      loop: true, // Enable infinite loop
+      loop: true,
+      grabCursor: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
