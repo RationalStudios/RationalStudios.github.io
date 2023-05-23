@@ -10,151 +10,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center; /* center the content vertically */
-      background: rgb(56,56,56);
-      background: linear-gradient(90deg, rgba(56,56,56,1) 0%, rgba(122,122,122,1) 35%);
-      margin-top: 70px;
-    }
-    
-    @font-face {
-      font-family: 'Blankenburg';
-      src: url('Blankenburg.ttf');
-    }
-    
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
-      background-color: rgba(34, 34, 34, 0.8);
-      backdrop-filter: blur(10px);
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      border-bottom: 2px solid #fff;
+    /* ... existing styles ... */
+
+    .swiper-slide {
+      /* ... existing styles ... */
+      transition: transform 0.3s;
+      transform-style: preserve-3d;
     }
 
-    .navbar ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
-    
-   .navbar li:not(:last-child) {
-    margin-right: 20px;
-   }
-
-    .navbar li a {
-      display: block;
-      padding: 10px 15px;
-      text-decoration: none;
-      color: #fff;
-      border-radius: 30px;
-      transition: all 0.2s ease;
-    }
-
-    .navbar li a:hover {
-      background-color: #ddd;
-      color: #222;
-      transform: scale(1.05);
-    }
-
-   .navbar .logo {
-    font-family: 'Blankenburg', Arial, sans-serif;
-    font-size: 30px;
-    color: #fff;
-    letter-spacing: 2px;
-    font-weight: bold;
-    flex: 1;
-    text-align: left;
-  }
-    
-    /* Add this section for the main content area */
-    .main-content {
-      position: absolute;
-      top: 70px; /* Add a top margin equal to the height of the navbar */
-      left: 50%;
-      transform: translate(-50%, 0);
-      max-width: 600px; /* set maximum width of the box */
-      padding: 10px;
-      text-align: center;
-      z-index: 1;
+    .swiper-slide:hover {
+      transform: scale(1.05) rotateY(10deg);
     }
     
     /* Add styles for the swiper container */
     .swiper-container {
-      width: 100%;
-      height: 100%;
-      perspective: 1000px; /* Add 3D perspective */
-    }
-    
-    /* Add styles for the swiper wrapper */
-    .swiper-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-    }
-    
-    /* Add styles for each swiper slide */
-    .swiper-slide {
-      background-color: rgb(50, 50, 50);
-      border-radius: 10px;
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-      padding: 20px;
-      text-align: center;
-      border-bottom: 4px solid #242324;
-      animation: slideAnimation 1s ease-in-out;
-      transition: transform 0.3s ease-in-out; /* Add transition for 3D effect */
-    }
-    
-    .swiper-slide:hover {
-      transform: scale(1.05) rotateX(10deg) rotateY(10deg); /* Apply 3D effect on hover */
-    }
-    
-    .swiper-slide h1,
-    .swiper-slide p {
-      color: #fff;
-    }
-    
-    .swiper-slide img {
-      display: block;
-      margin: 0 auto;
-      max-width: 100%;
-    }
-    
-    .swiper-slide h4 {
-      color: #fff;
-      margin-bottom: 10px;
-    }
-    
-    .swiper-slide a img {
-      display: block;
-      margin: 0 auto;
-      max-width: 10%;
-    }
-    
-    /* Keyframes for the slide animation */
-    @keyframes slideAnimation {
-      0% {
-        transform: scale(0.5);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
+      /* ... existing styles ... */
+      perspective: 1000px;
     }
   </style>
 </head>
@@ -189,23 +60,30 @@
           <h1>Third Card</h1>
           <p>This is the content for the third card.</p>
         </div>
-        <!-- Add more swiper-slide divs for additional cards -->
+        <div class="swiper-slide">
+          <!-- Content for the fourth card -->
+          <h1>Fourth Card</h1>
+          <p>This is the content for the fourth card.</p>
+        </div>
+        <div class="swiper-slide">
+          <!-- Content for the fifth card -->
+          <h1>Fifth Card</h1>
+          <p>This is the content for the fifth card.</p>
+        </div>
       </div>
+      <!-- Add navigation buttons -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
   </div>
-
+  
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
-    var swiper = new Swiper('.swiper-container', {
-      direction: 'horizontal',
+    const swiper = new Swiper('.swiper-container', {
       slidesPerView: 'auto',
       centeredSlides: true,
+      spaceBetween: 30,
       loop: true,
-      grabCursor: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
