@@ -114,7 +114,6 @@
       padding: 20px;
       text-align: center;
       border-bottom: 4px solid #242324;
-      animation: slideAnimation 1s ease-in-out;
     }
     
     .swiper-slide h1,
@@ -137,18 +136,6 @@
       display: block;
       margin: 0 auto;
       max-width: 10%;
-    }
-    
-    /* Keyframes for the slide animation */
-    @keyframes slideAnimation {
-      0% {
-        transform: scale(0.5);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
     }
   </style>
 </head>
@@ -212,3 +199,35 @@
   </script>
 </body>
 </html>
+Now the cards in the Swiper container won't have the slide animation anymore.
+
+
+
+
+
+User
+why do the cards disappear on the right side of the screen when scrolling from  right to left?
+
+ChatGPT
+Apologies for the oversight. The issue is occurring because the .swiper-wrapper class has the property justify-content: center;, which centers the slides horizontally. When you scroll from right to left, the slides are centered, causing the last slide to move out of the viewport.
+
+To fix this issue and prevent the cards from disappearing, you can modify the CSS for the .swiper-wrapper class. Instead of using justify-content: center;, you can use justify-content: flex-start; to align the slides to the left edge of the container.
+
+Here's the updated CSS code:
+
+html
+Copy code
+<style>
+  /* ... */
+  
+  /* Add styles for the swiper wrapper */
+  .swiper-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Updated property */
+    height: 100%;
+    overflow-x: auto; /* Added property */
+  }
+  
+  /* ... */
+</style>
