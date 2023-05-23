@@ -18,16 +18,16 @@
       display: flex;
       flex-direction: column;
       justify-content: center; /* center the content vertically */
-      background: rgb(56,56,56);
-      background: linear-gradient(90deg, rgba(56,56,56,1) 0%, rgba(122,122,122,1) 35%);
+      background: rgb(56, 56, 56);
+      background: linear-gradient(90deg, rgba(56, 56, 56, 1) 0%, rgba(122, 122, 122, 1) 35%);
       margin-top: 70px;
     }
-    
+
     @font-face {
       font-family: 'Blankenburg';
       src: url('Blankenburg.ttf');
     }
-    
+
     .navbar {
       position: fixed;
       top: 0;
@@ -50,10 +50,10 @@
       justify-content: flex-end;
       align-items: center;
     }
-    
-   .navbar li:not(:last-child) {
-    margin-right: 20px;
-   }
+
+    .navbar li:not(:last-child) {
+      margin-right: 20px;
+    }
 
     .navbar li a {
       display: block;
@@ -70,16 +70,16 @@
       transform: scale(1.05);
     }
 
-   .navbar .logo {
-    font-family: 'Blankenburg', Arial, sans-serif;
-    font-size: 30px;
-    color: #fff;
-    letter-spacing: 2px;
-    font-weight: bold;
-    flex: 1;
-    text-align: left;
-  }
-    
+    .navbar .logo {
+      font-family: 'Blankenburg', Arial, sans-serif;
+      font-size: 30px;
+      color: #fff;
+      letter-spacing: 2px;
+      font-weight: bold;
+      flex: 1;
+      text-align: left;
+    }
+
     /* Add this section for the main content area */
     .main-content {
       position: absolute;
@@ -91,13 +91,13 @@
       text-align: center;
       z-index: 1;
     }
-    
+
     /* Add styles for the swiper container */
     .swiper-container {
       width: 100%;
       height: 100%;
     }
-    
+
     /* Add styles for the swiper wrapper */
     .swiper-wrapper {
       display: flex;
@@ -106,7 +106,7 @@
       height: 100%;
       overflow-x: auto; /* Added property */
     }
-    
+
     /* Add styles for each swiper slide */
     .swiper-slide {
       background-color: rgb(50, 50, 50);
@@ -115,29 +115,42 @@
       padding: 20px;
       text-align: center;
       border-bottom: 4px solid #242324;
+      /* animation: slideAnimation 1s ease-in-out; */ /* Removed animation */
     }
-    
+
     .swiper-slide h1,
     .swiper-slide p {
       color: #fff;
     }
-    
+
     .swiper-slide img {
       display: block;
       margin: 0 auto;
       max-width: 100%;
     }
-    
+
     .swiper-slide h4 {
       color: #fff;
       margin-bottom: 10px;
     }
-    
+
     .swiper-slide a img {
       display: block;
       margin: 0 auto;
       max-width: 10%;
     }
+
+    /* Keyframes for the slide animation */
+    /* @keyframes slideAnimation {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    } */
   </style>
 </head>
 <body>
@@ -148,7 +161,7 @@
       <li><a href="https://qsadesoft.github.io/Projects">Projects</a></li>
     </ul>
   </div>
-  
+
   <div class="main-content">
     <div class="swiper-container">
       <div class="swiper-wrapper">
@@ -184,7 +197,7 @@
       </div>
     </div>
   </div>
-  
+
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
     const swiper = new Swiper('.swiper-container', {
