@@ -8,7 +8,6 @@
   <title>QsadeSoft</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <style>
     body {
       margin: 0;
@@ -17,12 +16,12 @@
       height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center; /* center the content vertically */
       background: rgb(56,56,56);
       background: linear-gradient(90deg, rgba(56,56,56,1) 0%, rgba(122,122,122,1) 35%);
-      margin-top: 70px;
+      overflow-y: auto; /* Enable vertical scrolling */
+      padding-top: 60px; /* Add padding top for the navbar */
     }
-    
+
     @font-face {
       font-family: 'Blankenburg';
       src: url('Blankenburg.ttf');
@@ -51,9 +50,9 @@
       align-items: center;
     }
     
-   .navbar li:not(:last-child) {
-    margin-right: 20px;
-   }
+    .navbar li:not(:last-child) {
+      margin-right: 20px;
+    }
 
     .navbar li a {
       display: block;
@@ -70,15 +69,15 @@
       transform: scale(1.05);
     }
 
-   .navbar .logo {
-    font-family: 'Blankenburg', Arial, sans-serif;
-    font-size: 30px;
-    color: #fff;
-    letter-spacing: 2px;
-    font-weight: bold;
-    flex: 1;
-    text-align: left;
-  }
+    .navbar .logo {
+      font-family: 'Blankenburg', Arial, sans-serif;
+      font-size: 30px;
+      color: #fff;
+      letter-spacing: 2px;
+      font-weight: bold;
+      flex: 1;
+      text-align: left;
+    }
     
     /* Add this section for the main content area */
     .main-content {
@@ -86,56 +85,25 @@
       top: 70px; /* Add a top margin equal to the height of the navbar */
       left: 50%;
       transform: translate(-50%, 0);
-      max-width: 600px; /* set maximum width of the box */
+      max-width: 600px;
       padding: 10px;
+      color: #fff;
       text-align: center;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
       z-index: 1;
     }
     
-    /* Add styles for the swiper container */
-    .swiper-container {
-      width: 100%;
-      height: 100%;
-    }
-    
-    /* Add styles for the swiper wrapper */
-    .swiper-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-    }
-    
-    /* Add styles for each swiper slide */
-    .swiper-slide {
+    /* Add styles for the box */
+    .box {
       background-color: rgb(50, 50, 50);
       border-radius: 10px;
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
       padding: 20px;
+      margin: 0 auto;
+      max-width: 600px;
       text-align: center;
       border-bottom: 4px solid #242324;
-    }
-    
-    .swiper-slide h1,
-    .swiper-slide p {
-      color: #fff;
-    }
-    
-    .swiper-slide img {
-      display: block;
-      margin: 0 auto;
-      max-width: 100%;
-    }
-    
-    .swiper-slide h4 {
-      color: #fff;
-      margin-bottom: 10px;
-    }
-    
-    .swiper-slide a img {
-      display: block;
-      margin: 0 auto;
-      max-width: 10%;
     }
   </style>
 </head>
@@ -149,53 +117,16 @@
   </div>
   
   <div class="main-content">
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <h1>Welcome to QsadeSoft</h1>
-          <p>We are an online software development group that aims to create software such as games as well as other tools.</p>
-          <img src="QsadeSoft.png" alt="The QsadeSoft Logo" style="display: block; margin: 0 auto; max-width: 100%;">
-          <h4>Join Our Discord Community!</h4>
-          <a href="https://discord.gg/rrd4zxXzbK" target="_blank">
-            <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Join our Discord server" style="display: block; margin: 0 auto; max-width: 10%;">
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <!-- Content for the second card -->
-          <h1>Second Card</h1>
-          <p>This is the content for the second card.</p>
-        </div>
-        <div class="swiper-slide">
-          <!-- Content for the third card -->
-          <h1>Third Card</h1>
-          <p>This is the content for the third card.</p>
-        </div>
-        <div class="swiper-slide">
-          <!-- Content for the fourth card -->
-          <h1>Fourth Card</h1>
-          <p>This is the content for the fourth card.</p>
-        </div>
-        <div class="swiper-slide">
-          <!-- Content for the fifth card -->
-          <h1>Fifth Card</h1>
-          <p>This is the content for the fifth card.</p>
-        </div>
-      </div>
+    <div class="box">
+      <!-- Add content inside this div -->
+      <h1>Welcome to QsadeSoft</h1>
+      <p>We are an online software development group that aims to create software such as games as well as other tools.</p>
+      <img src="QsadeSoft.png" alt="The QsadeSoft Logo" style="display: block; margin: 0 auto; max-width: 100%;">
+      <h4>Join Our Discord Community!</h4>
+      <a href="https://discord.gg/rrd4zxXzbK" target="_blank">
+        <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Join our Discord server" style="display: block; margin: 0 auto; max-width: 10%;">
+      </a>
     </div>
   </div>
-  
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script>
-    const swiper = new Swiper('.swiper-container', {
-      slidesPerView: 'auto',
-      centeredSlides: true,
-      spaceBetween: 30,
-      loop: true, // Enable infinite loop
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  </script>
 </body>
 </html>
