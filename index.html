@@ -115,8 +115,6 @@
       text-align: center;
       border-bottom: 4px solid #242324;
       animation: slideAnimation 1s ease-in-out;
-      transform-style: preserve-3d;
-      transition: transform 0.5s;
     }
     
     .swiper-slide h1,
@@ -139,11 +137,6 @@
       display: block;
       margin: 0 auto;
       max-width: 10%;
-    }
-
-    /* Add 3D effect on hover */
-    .swiper-slide:hover {
-      transform: scale(1.1);
     }
     
     /* Keyframes for the slide animation */
@@ -171,7 +164,7 @@
   <div class="main-content">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide effect-cube">
+        <div class="swiper-slide">
           <h1>Welcome to QsadeSoft</h1>
           <p>We are an online software development group that aims to create software such as games as well as other tools.</p>
           <img src="QsadeSoft.png" alt="The QsadeSoft Logo" style="display: block; margin: 0 auto; max-width: 100%;">
@@ -180,40 +173,40 @@
             <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Join our Discord server" style="display: block; margin: 0 auto; max-width: 10%;">
           </a>
         </div>
-        <div class="swiper-slide effect-cube">
-          <h1>Project 1</h1>
-          <p>Description of project 1.</p>
+        <div class="swiper-slide">
+          <!-- Content for the second card -->
+          <h1>Second Card</h1>
+          <p>This is the content for the second card.</p>
         </div>
-        <div class="swiper-slide effect-cube">
-          <h1>Project 2</h1>
-          <p>Description of project 2.</p>
+        <div class="swiper-slide">
+          <!-- Content for the third card -->
+          <h1>Third Card</h1>
+          <p>This is the content for the third card.</p>
         </div>
-        <div class="swiper-slide effect-cube">
-          <h1>Project 3</h1>
-          <p>Description of project 3.</p>
+        <div class="swiper-slide">
+          <!-- Content for the fourth card -->
+          <h1>Fourth Card</h1>
+          <p>This is the content for the fourth card.</p>
         </div>
-        <div class="swiper-slide effect-cube">
-          <h1>Project 4</h1>
-          <p>Description of project 4.</p>
+        <div class="swiper-slide">
+          <!-- Content for the fifth card -->
+          <h1>Fifth Card</h1>
+          <p>This is the content for the fifth card.</p>
         </div>
       </div>
     </div>
   </div>
-
+  
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
-    var swiper = new Swiper('.swiper-container', {
+    const swiper = new Swiper('.swiper-container', {
       slidesPerView: 'auto',
       centeredSlides: true,
-      grabCursor: true,
-      loop: true,
-      loopAdditionalSlides: 2,
+      spaceBetween: 30,
+      loop: true, // Enable infinite loop
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
-      },
-      keyboard: {
-        enabled: true,
       },
     });
   </script>
