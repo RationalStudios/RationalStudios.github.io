@@ -33,12 +33,9 @@
       left: 0;
       right: 0;
       z-index: 9999;
-      background-color: rgba(29, 155, 206, 0.8);
-      backdrop-filter: blur(10px);
       padding: 10px 20px;
       display: flex;
       align-items: center;
-      border-bottom: 2px solid #1dce61;
     }
 
     .navbar ul {
@@ -79,34 +76,16 @@
       text-align: left;
     }
     
-    /* Add this section for the main content area */
     .main-content {
-      position: absolute;
-      top: 70px; /* Add a top margin equal to the height of the navbar */
-      left: 50%;
-      transform: translate(-50%, 0);
-      max-width: 600px;
-      padding: 10px;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
       color: #fff;
-      text-align: center;
-      background-color: rgba(21, 25, 24, 0.5);
-      border-radius: 20px;
-      z-index: 1;
-    }
-    
-    /* Add styles for the box */
-    .box {
       background-color: #151918;
-      border-radius: 10px;
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-      padding: 20px;
-      margin: 0 auto;
-      max-width: 600px;
-      text-align: center;
-      border-bottom: 4px solid #0b0e0d;
     }
     
-    /* Add styles for the contact form */
     .contact-form {
       margin-top: 30px;
       text-align: left;
@@ -129,17 +108,19 @@
       box-sizing: border-box;
     }
     
-    .contact-form button {
+    .contact-form .submit-button {
       background-color: #1dce61;
       color: #fff;
       border: none;
       padding: 10px 20px;
       border-radius: 30px;
       cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
     }
     
-    .contact-form button:hover {
+    .contact-form .submit-button:hover {
       background-color: #1d9bce;
+      transform: scale(1.05);
     }
 
     .form-status {
@@ -159,28 +140,21 @@
   </div>
   
   <div class="main-content">
-    <div class="box">
-      <!-- Add content inside this div -->
-      <img src="RationalStudios.png" alt="The Rational Studios Logo" style="display: block; margin: 0 auto; max-width: 100%;">
-      </a>
-      
-      <!-- Add contact form -->
-      <div class="contact-form">
-        <h3>Contact Us</h3>
-        <form id="contact-form" action="https://formspree.io/f/xyyaqeoe" method="POST">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
-          
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-          
-          <label for="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
-          
-          <button type="submit">Submit</button>
-        </form>
-        <div id="form-status" class="form-status"></div>
-      </div>
+    <div class="contact-form">
+      <h3>Contact Us</h3>
+      <form id="contact-form" action="https://formspree.io/f/xyyaqeoe" method="POST">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <button type="submit" class="submit-button">Submit</button>
+      </form>
+      <div id="form-status" class="form-status"></div>
     </div>
   </div>
 

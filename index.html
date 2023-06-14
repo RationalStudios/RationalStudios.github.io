@@ -16,8 +16,7 @@
       height: 100vh;
       display: flex;
       flex-direction: column;
-      background: #1d9bce;
-      background: linear-gradient(90deg, #1d9bce 0%, #1dce61 35%);
+      background: #151918;
       overflow-y: auto; /* Enable vertical scrolling */
       padding-top: 60px; /* Add padding top for the navbar */
     }
@@ -26,19 +25,18 @@
       font-family: 'codec';
       src: url('Codec-Bold.ttf');
     }
-    
+
     .navbar {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 9999;
-      background-color: rgba(29, 155, 206, 0.8);
-      backdrop-filter: blur(10px);
       padding: 10px 20px;
       display: flex;
       align-items: center;
-      border-bottom: 2px solid #1dce61;
+      background-color: #fff;
+      border-bottom: 2px solid #1d9bce;
     }
 
     .navbar ul {
@@ -49,7 +47,7 @@
       justify-content: flex-end;
       align-items: center;
     }
-    
+
     .navbar li:not(:last-child) {
       margin-right: 20px;
     }
@@ -58,7 +56,7 @@
       display: block;
       padding: 10px 15px;
       text-decoration: none;
-      color: #fff;
+      color: #222;
       border-radius: 30px;
       transition: all 0.2s ease;
     }
@@ -72,38 +70,141 @@
     .navbar .logo {
       font-family: 'codec', Arial, sans-serif;
       font-size: 30px;
-      color: #fff;
+      color: #222;
       letter-spacing: 2px;
       font-weight: bold;
       flex: 1;
       text-align: left;
     }
-    
-    /* Add this section for the main content area */
+
     .main-content {
-      position: absolute;
-      top: 70px; /* Add a top margin equal to the height of the navbar */
-      left: 50%;
-      transform: translate(-50%, 0);
-      max-width: 600px;
-      padding: 10px;
+      position: relative;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
       color: #fff;
-      text-align: center;
-      background-color: rgba(21, 25, 24, 0.5);
-      border-radius: 20px;
-      z-index: 1;
-    }
-    
-    /* Add styles for the box */
-    .box {
       background-color: #151918;
-      border-radius: 10px;
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-      padding: 20px;
+    }
+
+    .content {
+      position: relative;
+      padding: 40px;
+      max-width: 800px;
       margin: 0 auto;
-      max-width: 600px;
+    }
+
+    .content h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .content a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #1dce61;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: all 0.2s ease;
+    }
+
+    .content a:hover {
+      background-color: #1d9bce;
+      transform: scale(1.05);
+    }
+
+    .project-section {
+      padding: 60px 0;
+      background-color: #f4f4f4;
       text-align: center;
-      border-bottom: 4px solid #0b0e0d;
+    }
+
+    .project-section h2 {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .project-card {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      text-align: left;
+    }
+
+    .project-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .project-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+
+    .footer {
+      background-color: #151918;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .logo-overlay {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 40%;
+      height: auto;
+      z-index: 2;
+    }
+
+    /* New Tag Styles */
+    .new-tag {
+      position: absolute;
+      top: 10px;
+      left: -20px;
+      transform: rotate(-45deg);
+      background-color: #1d9bce;
+      color: #fff;
+      padding: 5px 15px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
+    /* Rainbow Animation */
+    @keyframes rainbow {
+      0% { color: #ff0000; }
+      14% { color: #ff7f00; }
+      28% { color: #ffff00; }
+      42% { color: #00ff00; }
+      57% { color: #0000ff; }
+      71% { color: #4b0082; }
+      85% { color: #8f00ff; }
+      100% { color: #ff0000; }
+    }
+
+    .rainbow-text {
+      animation: rainbow 4s linear infinite;
     }
   </style>
 </head>
@@ -115,17 +216,47 @@
       <li><a href="https://rationalstudios.github.io/Contact">Contact</a></li>
     </ul>
   </div>
-  
+
   <div class="main-content">
-    <div class="box">
-      <!-- Add content inside this div -->
-      <h1>Welcome to Rational Studios!</h1>
-      <p>We are an online software development group that aims to create software such as games as well as other tools.</p>
-      <img src="RationalStudios.png" alt="The Rational Studios Logo" style="display: block; margin: 0 auto; max-width: 100%;">
-      <h4>Join Our Discord Community!</h4>
-      <a href="https://discord.gg/rrd4zxXzbK" target="_blank">
-        <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Join our Discord server" style="display: block; margin: 0 auto; max-width: 10%;">
-      </a>
+    <div class="content">
+      <img class="logo-overlay" src="RationalStudios.png" alt="Rational Studios Logo">
+      <h1>Welcome to Rational Studios</h1>
+      <p>We are an online software development group that aims to create software such as games as well as other tools. Many Studios aren't very rational, but we're different.</p>
+      <a href="#projects">Learn More</a>
+    </div>
+  </div>
+
+  <div class="project-section" id="projects">
+    <div class="content">
+      <h2>Our Projects</h2>
+      <div class="project-card">
+        <h3>Vance</h3>
+        <p>Vance is a reimagining of Half-Life 2 from the point of view of the deuteragonist Alyx Vance. In the universe of Vance, Gordon Freeman never returns and is presumed dead, leaving Alyx in his place.</p>
+        <img src="alyxfire.png" alt="Image of Alyx Vance sitting near a fire." style="border-radius: 10px; object-fit: contain; width: 100%;">
+        <a href="https://youtu.be/tv1brkyENcs">View Game</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Annihilation44</h3>
+        <div class="new-tag">New!</div>
+        <p>Annihilation44 is a World War 2 Shooter like no other.</p>
+        <a href="https://youtu.be/uePUCdkoeTI">View Our Promo (We need devs)</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Rational OS</h3>
+        <div class="new-tag">New!</div>
+        <p>Rational OS is a new OS we are developing because Linux is <span class="rainbow-text">gay</span>.</p>
+        <a href="https://gitlab.com/rationalstudios/rational-os">View Software on GitLab</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="content">
+      <p>Social Media Links</p>
+      <a href="https://www.youtube.com/channel/UC6vdNCdvpvc94X168XRqnQg">YouTube</a>
+      <a href="https://discord.gg/rrd4zxXzbK">Discord</a>
     </div>
   </div>
 </body>
