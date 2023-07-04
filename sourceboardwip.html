@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Source Board</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Source Board</h1>
+  </header>
+  <main>
+    <div class="pinned-post">
+      <h2>Pinned Rules</h2>
+      <div class="rules-content">
+        <div class="rules-image">
+          <img src="rules_image.png" alt="rules_image.png">
+        </div>
+        <div class="rules-text">
+          <ul>
+            <li>Rule 1</li>
+            <li>Rule 2</li>
+            <li>Rule 3</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="create-thread-container">
+        <button id="open-form-button">Create Thread</button>
+        <form id="thread-form" class="hidden">
+          <input type="text" id="thread-title" placeholder="Thread title" required>
+          <input type="text" id="thread-name" placeholder="Name (optional)">
+          <textarea id="thread-content" placeholder="Thread content"></textarea>
+          <input type="file" id="image-upload" accept="image/*" multiple>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+
+    <div id="threads"></div>
+    <div id="pagination"></div>
+  </main>
+
+  <script>
+    let threads = [];
+    const threadsPerPage = 5; // Number of threads to display per page
+    let currentPage = 1;
+
+    function renderThreads() {
+      const threadsContainer = document.getElementById('threads');
+      const paginationContainer = document.getElementById('pagination');
+      threadsContainer.innerHTML = '';
+      paginationContainer.innerHTML = '';
+
+      // Calculate pagination values
+      const startIndex = (currentPage - 1) * threadsPerPage;
+      const endIndex = startIndex + threadsPerPage;
+      const paginatedThreads = threads.slice(startIndex, endIndex);
+
+      paginatedThreads.forEach((thread) => {
+        const threadDiv = document.createElement('div');
+        threadDiv.className = 'thread';
+        threadDiv.innerHTML = `
+          <h2>${thread.title}</h2>
+          <p><strong>${thread.name || 'Anonymous'}</strong> - ${thread.content}</p>
+          <div class="thread-images">
+            ${thread.images.map((image) => `<img src="${image}" alt="${getFileName(image)}">`).join('')}
+          </div>
+          <button class="delete-thread" data-thread-id="${thread.id}">Delete Thread</button>
+        `;
+
+        const deleteButton = threadDiv.querySelector('.delete-thread');
+        deleteButton.addEventListener('click', (event) => {
+          const threadId = event.target.dataset.threadId;
+          deleteThread(threadId);
+        });
+
+        threadsContainer.appendChild(threadDiv);
+      });
+
+      // Calculate total number of pages
+      const totalPages = Math.ceil(threads.length / threadsPerPage);
+
+      // Generate pagination buttons
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        if (i === currentPage) {
+          pageButton.className = 'active';
+        }
+        pageButton.addEventListener('click', () => {
+          currentPage = i;
+          renderThreads();
+        });
+        paginationContainer.appendChild(pageButton);
+      }
+    }
+
+    function createThread(title, name, content, images) {
+      const newThread = {
+        id: Date.now(),
+        title,
+        name,
+        content,
+        images,
+      };
+
+      threads.push(newThread);
+      renderThreads();
+    }
+
+    function deleteThread(threadId) {
+      threads = threads.filter((thread) => thread.id !== parseInt(threadId));
+      renderThreads();
+    }
+
+    const threadForm = document.getElementById('thread-form');
+    const openFormButton = document.getElementById('open-form-button');
+
+    function toggleThreadForm() {
+      threadForm.classList.toggle('visible');
+    }
+
+    openFormButton.addEventListener('click', () => {
+      toggleThreadForm();
+    });
+
+    threadForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const threadTitleInput = document.getElementById('thread-title');
+      const threadNameInput = document.getElementById('thread-name');
+      const threadContentInput = document.getElementById('thread-content');
+      const imageUploadInput = document.getElementById('image-upload');
+
+      const title = threadTitleInput.value;
+      const name = threadNameInput.value || '';
+      const content = threadContentInput.value;
+      const images = [];
+
+      for (let i = 0; i < imageUploadInput.files.length; i++) {
+        const imageUrl = URL.createObjectURL(imageUploadInput.files[i]);
+        images.push(imageUrl);
+      }
+
+      createThread(title, name, content, images);
+
+      threadTitleInput.value = '';
+      threadNameInput.value = '';
+      threadContentInput.value = '';
+      imageUploadInput.value = '';
+
+      toggleThreadForm();
+    });
+
+    renderThreads();
+
+    // Helper function to extract the filename from the image path
+    function getFileName(path) {
+      return path.split('/').pop();
+    }
+  </script>
+
+  <style>
+    /* Customize the styles according to your preferences */
+    body {
+      font-family: "Arial", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+
+    header {
+      background-color: #000;
+      padding: 10px;
+    }
+
+    h1 {
+      font-size: 24px;
+      text-align: center;
+      margin: 0;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .pinned-post {
+      background-color: #383838;
+      border: 1px solid #000;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .pinned-post h2 {
+      margin: 0;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #000;
+      font-size: 20px;
+      font-weight: bold;
+      color: #ff6600;
+    }
+
+    .rules-content {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .rules-image img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .rules-content ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    #create-thread-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    #open-form-button {
+      background-color: #ff6600;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    #thread-form {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      background-color: #3a3a3a;
+      padding: 20px;
+      border: 1px solid #000;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    #thread-form.visible {
+      display: flex;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .thread {
+      border: 1px solid #000;
+      background-color: #3a3a3a;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .thread h2 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #ff6600;
+    }
+
+    .thread p {
+      margin-bottom: 10px;
+    }
+
+    .thread-images {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .thread-images img {
+      max-width: 100%;
+      height: auto;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+
+    .delete-thread {
+      background-color: #f44336;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      background-color: #fff;
+      color: #000;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    input[type="file"] {
+      margin-bottom: 10px;
+    }
+
+    #pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    #pagination button {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+
+    #pagination button.active {
+      background-color: #ff6600;
+    }
+  </style>
+</body>
+</html>
