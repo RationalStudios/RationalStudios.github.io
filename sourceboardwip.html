@@ -26,15 +26,15 @@
     </div>
 
     <div id="create-thread-container">
-        <button id="open-form-button">Create Thread</button>
-        <form id="thread-form" class="hidden">
-          <input type="text" id="thread-title" placeholder="Thread title" required>
-          <input type="text" id="thread-name" placeholder="Name (optional)">
-          <textarea id="thread-content" placeholder="Thread content"></textarea>
-          <input type="file" id="image-upload" accept="image/*" multiple>
-          <input type="submit" value="Submit">
-        </form>
-      </div>
+      <button id="open-form-button">Create Thread</button>
+      <form id="thread-form" class="hidden">
+        <input type="text" id="thread-title" placeholder="Thread title" required>
+        <input type="text" id="thread-name" placeholder="Name (optional)">
+        <textarea id="thread-content" placeholder="Thread content"></textarea>
+        <input type="file" id="image-upload" accept="image/*" multiple>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
 
     <div id="threads"></div>
     <div id="pagination"></div>
@@ -62,8 +62,10 @@
         threadDiv.innerHTML = `
           <h2>${thread.title}</h2>
           <p><strong>${thread.name || 'Anonymous'}</strong> - ${thread.content}</p>
+          <p class="timestamp">Time: ${formatTimestamp(thread.timestamp)}</p>
+          <p class="thread-id">ID: ${thread.id}</p>
           <div class="thread-images">
-            ${thread.images.map((image) => `<img src="${image}" alt="${getFileName(image)}">`).join('')}
+            ${thread.images.map((image) => `<a class="image-link" href="${image}" target="_blank"><img class="thread-image" src="${image}" alt="${getFileName(image)}"></a>`).join('')}
           </div>
           <button class="delete-thread" data-thread-id="${thread.id}">Delete Thread</button>
         `;
@@ -102,6 +104,7 @@
         name,
         content,
         images,
+        timestamp: new Date(),
       };
 
       threads.push(newThread);
@@ -157,6 +160,12 @@
     // Helper function to extract the filename from the image path
     function getFileName(path) {
       return path.split('/').pop();
+    }
+
+    // Helper function to format the timestamp
+    function formatTimestamp(timestamp) {
+      const options = { hour: 'numeric', minute: 'numeric' };
+      return new Intl.DateTimeFormat('en-US', options).format(timestamp);
     }
   </script>
 
@@ -287,6 +296,12 @@
       height: auto;
       margin-right: 5px;
       margin-bottom: 5px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    
+    .thread-images img:hover {
+      transform: scale(1.2);
     }
 
     .delete-thread {
