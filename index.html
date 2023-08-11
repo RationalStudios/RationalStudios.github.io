@@ -196,7 +196,7 @@
       border-radius: 4px;
     }
 
-      /* Main Tag Styles */
+    /* Main Tag Styles */
     .main-tag {
       position: absolute;
       top: 10px;
@@ -222,6 +222,28 @@
       font-size: 14px;
       font-weight: bold;
       border-radius: 4px;
+    }
+
+    /* Themed Video Player */
+    .themed-video {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    /* Video Wrapper */
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    }
+
+    /* Video IFrame */
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
 
   </style>
@@ -252,7 +274,9 @@
         <div class="main-tag">Main!</div>
         <p>Annihilation44 is an upcoming WW2 game crafted within the powerful Source Engine, drawing artistic inspiration from the iconic styles of J.C Leyendecker and Roger Wilkerson. This choice of aesthetic perfectly captures the essence of the WW2 era, allowing players to immerse themselves in its atmosphere.</p>
         <p>Annihilation44 is being made in collaboration with the creators of Europa The Last Battle to bring unparalleled historical depth as well as immersive story telling to bring an interactive experience like no other.</p>
-        <img src="an44.png" alt="Image of the Annihilation44 logo." style="border-radius: 10px; object-fit: contain; width: 100%;">
+        <div class="video-wrapper">
+          <iframe class="themed-video" src="https://www.youtube.com/embed/MQ4f0o_0zeo" frameborder="0" allowfullscreen></iframe>
+        </div>
         <a href="https://europathelastbattle.net/">Europa Website</a>
       </div>
 
