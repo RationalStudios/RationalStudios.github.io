@@ -1,311 +1,348 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta property="og:title" content="Rational Studios">
-  <meta property="og:description" content="We are an online software development group that aims to create software such as games as well as other tools.">
-  <meta property="og:url" content="https://rationalstudios.github.io">
-  <meta property="og:image" content="https://rationalstudios.github.io/Rational%20Studios.png">
-  <title>Rational Studios</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: #090909;
-      overflow-y: auto; /* Enable vertical scrolling */
-      padding-top: 60px; /* Add padding top for the navbar */
-    }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Rational Studios">
+    <meta property="og:description" content="We are an online software development group that aims to create software such as games as well as other tools.">
+    <meta property="og:url" content="https://rationalstudios.github.io">
+    <meta property="og:image" content="https://rationalstudios.github.io/Rational%20Studios.png">
+    <title>Rational Studios</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: #090909;
+            overflow-y: auto; /* Enable vertical scrolling */
+            padding-top: 60px; /* Add padding top for the navbar */
+        }
 
-    @font-face {
-      font-family: 'codec';
-      src: url('Codec-Bold.ttf');
-    }
+        @font-face {
+            font-family: 'codec';
+            src: url('Codec-Bold.ttf');
+        }
 
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      background-color: #fff;
-      border-bottom: 2px solid #ff5400;
-    }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-bottom: 2px solid #ff5400;
+        }
 
-    .navbar ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
+            .navbar ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
 
-    .navbar li:not(:last-child) {
-      margin-right: 20px;
-    }
+            .navbar li:not(:last-child) {
+                margin-right: 20px;
+            }
 
-    .navbar li a {
-      display: block;
-      padding: 10px 15px;
-      text-decoration: none;
-      color: #090909;
-      border-radius: 30px;
-      transition: all 0.2s ease;
-    }
+            .navbar li a {
+                display: block;
+                padding: 10px 8px; /* Adjust padding here */
+                text-decoration: none;
+                color: #090909;
+                border-radius: 30px;
+                transition: all 0.2s ease;
+            }
 
-    .navbar li a:hover {
-      background-color: #ddd;
-      color: #090909;
-      transform: scale(1.05);
-    }
+                .navbar li a:hover {
+                    background-color: #ddd;
+                    color: #090909;
+                    transform: scale(1.05);
+                }
 
-    .navbar .logo {
-      font-family: 'codec', Arial, sans-serif;
-      font-size: 30px;
-      color: #090909;
-      letter-spacing: 2px;
-      font-weight: bold;
-      flex: 1;
-      text-align: left;
-    }
+            .navbar .logo {
+                font-family: 'codec', Arial, sans-serif;
+                font-size: 30px;
+                color: #090909;
+                letter-spacing: 2px;
+                font-weight: bold;
+                flex: 1;
+                text-align: left;
+            }
 
-    .main-content {
-      position: relative;
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      background-color: #090909;
-    }
+        .main-content {
+            position: relative;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            background-color: #090909;
+        }
 
-    .content {
-      position: relative;
-      padding: 40px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
+        .content {
+            position: relative;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .content h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
+            .content h1 {
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
 
-    .content p {
-      font-size: 18px;
-      line-height: 1.5;
-    }
+            .content p {
+                font-size: 18px;
+                line-height: 1.5;
+            }
 
-    .content a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #ff5400;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 30px;
-      transition: all 0.2s ease;
-    }
+            .content a {
+                display: inline-block;
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #ff5400;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 30px;
+                transition: all 0.2s ease;
+            }
 
-    .content a:hover {
-      background-color: #e65100;
-      transform: scale(1.05);
-    }
+                .content a:hover {
+                    background-color: #e65100;
+                    transform: scale(1.05);
+                }
 
-    .project-section {
-      padding: 60px 0;
-      background-color: #fff;
-      text-align: center;
-    }
+        .project-section {
+            padding: 60px 0;
+            background-color: #fff;
+            text-align: center;
+        }
 
-    .project-section {
-      padding: 60px 0;
-      background-image: url('background.jpg');
-      background-size: cover;
-      background-position: center;
-      text-align: center;
-    }
+        .project-section {
+            padding: 60px 0;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
 
-    .project-section h2 {
-      position: relative;
-      display: inline-block;
-      font-size: 24px;
-      margin-bottom: 30px;
-      padding: 10px 20px;
-      background-color: #ff5400;
-      color: #fff;
-      border-radius: 4px;
-    }
+            .project-section h2 {
+                position: relative;
+                display: inline-block;
+                font-size: 24px;
+                margin-bottom: 30px;
+                padding: 10px 20px;
+                background-color: #ff5400;
+                color: #fff;
+                border-radius: 4px;
+            }
 
-    .project-card {
-      position: relative;
-      max-width: 600px;
-      margin: 0 auto 40px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-      text-align: left;
-    }
+        .project-card {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: left;
+        }
 
-    .project-card h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
+            .project-card h3 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
 
-    .project-card p {
-      font-size: 16px;
-      line-height: 1.5;
-    }
+            .project-card p {
+                font-size: 16px;
+                line-height: 1.5;
+            }
 
-    .project-card img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-      object-fit: contain;
-    }
+            .project-card img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px;
+                object-fit: contain;
+            }
 
-    .footer {
-      background-color: #090909;
-      padding: 20px;
-      text-align: center;
-      color: #fff;
-    }
+        .footer {
+            background-color: #090909;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
 
-    /* New Tag Styles */
-    .new-tag {
-      position: absolute;
-      top: 10px;
-      left: -20px;
-      transform: rotate(-45deg);
-      background-color: #808080;
-      color: #fff;
-      padding: 5px 15px;
-      font-size: 14px;
-      font-weight: bold;
-      border-radius: 4px;
-    }
+        /* New Tag Styles */
+        .new-tag {
+            position: absolute;
+            top: 10px;
+            left: -20px;
+            transform: rotate(-45deg);
+            background-color: #808080;
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
 
-    /* Main Tag Styles */
-    .main-tag {
-      position: absolute;
-      top: 10px;
-      left: -20px;
-      transform: rotate(-45deg);
-      background-color: #ff5400;
-      color: #fff;
-      padding: 5px 15px;
-      font-size: 14px;
-      font-weight: bold;
-      border-radius: 4px;
-    }
+        /* Main Tag Styles */
+        .main-tag {
+            position: absolute;
+            top: 10px;
+            left: -20px;
+            transform: rotate(-45deg);
+            background-color: #ff5400;
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
 
-    /* Complete Tag Styles */
-    .success-tag {
-      position: absolute;
-      top: 10px;
-      left: -20px;
-      transform: rotate(-45deg);
-      background-color: #00abff;
-      color: #fff;
-      padding: 5px 15px;
-      font-size: 14px;
-      font-weight: bold;
-      border-radius: 4px;
-    }
+        /* Complete Tag Styles */
+        .success-tag {
+            position: absolute;
+            top: 10px;
+            left: -20px;
+            transform: rotate(-45deg);
+            background-color: #00abff;
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
 
-    /* Themed Video Player */
-    .themed-video {
-      width: 100%;
-      border-radius: 10px;
-      overflow: hidden;
-    }
+        /* Themed Video Player */
+        .themed-video {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
 
-    /* Video Wrapper */
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    }
+        /* Video Wrapper */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
 
-    /* Video IFrame */
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
+            /* Video IFrame */
+            .video-wrapper iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
 
-  </style>
+        /* Media query for mobile devices */
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 5px 10px;
+            }
+
+                .navbar li:not(:last-child) {
+                    margin-right: 10px;
+                }
+
+            .content {
+                padding: 20px;
+            }
+
+            .project-section {
+                padding: 30px 0;
+            }
+
+            .project-card {
+                max-width: 100%;
+                margin-bottom: 30px;
+                padding: 20px;
+            }
+
+            /* Adjust font sizes for mobile */
+            .content h1 {
+                font-size: 24px;
+            }
+
+            .content p {
+                font-size: 16px;
+            }
+
+            .project-card h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="navbar">
-    <div class="logo">Rational Studios</div>
-    <ul>
-      <li><a href="https://rationalstudios.github.io/">Home</a></li>
-      <li><a href="https://rationalstudios.github.io/Micro">Micro</a></li>
-      <li><a href="https://rationalstudios.github.io/Contact">Contact</a></li>
-    </ul>
-  </div>
-
-  <div class="main-content">
-    <div class="content">
-      <h1>Welcome to Rational Studios</h1>
-      <p>We are an online software development group that aims to create software such as games as well as other tools. Many Studios aren't very rational, but we're different.</p>
-      <a href="#projects">Learn More</a>
+    <div class="navbar">
+        <div class="logo">Rational Studios</div>
+        <ul>
+            <li><a href="https://rationalstudios.github.io/">Home</a></li>
+            <li><a href="https://rationalstudios.github.io/Micro">Micro</a></li>
+            <li><a href="https://rationalstudios.github.io/Contact">Contact</a></li>
+        </ul>
     </div>
-  </div>
 
-  <div class="project-section" id="projects">
-    <div class="content">
-      <h2>Our Projects</h2>
-      <div class="project-card">
-        <h3>Annihilation44</h3>
-        <div class="main-tag">Main!</div>
-        <p>Annihilation44 is an upcoming WW2 game crafted within the powerful Unreal Engine, drawing artistic inspiration from the iconic styles of J.C Leyendecker and Roger Wilkerson. This choice of aesthetic perfectly captures the essence of the WW2 era, allowing players to immerse themselves in its atmosphere.</p>
-        <p>Annihilation44 is being made in collaboration with the creators of Europa The Last Battle to bring unparalleled historical depth as well as immersive story telling to bring an interactive experience like no other.</p>
-        <div class="video-wrapper">
-          <iframe class="themed-video" src="https://www.youtube.com/embed/MQ4f0o_0zeo" frameborder="0" allowfullscreen></iframe>
+    <div class="main-content">
+        <div class="content">
+            <h1>Welcome to Rational Studios</h1>
+            <p>We are an online software development group that aims to create software such as games as well as other tools. Many Studios aren't very rational, but we're different.</p>
+            <a href="#projects">Learn More</a>
         </div>
-        <a href="https://europathelastbattle.net/">Europa Website</a>
-      </div>
-
-      <div class="project-card">
-        <h3>Etherin</h3>
-        <div class="new-tag">New!</div>
-        <p>Etherin is an Operating System that not only controls every single thing in your home smart or not but it integrates into your life to make every day life easier unlike a smart home. Etherin will run on custom hardware made by us and will have support to run on a variety of different systems in the future. This may include support for retro x86 cpu's.</p>
-        <img src="etherin.png" alt="Image of the Etherin logo." style="border-radius: 10px; object-fit: contain; width: 100%;">
-      </div>
-
-      <div class="project-card">
-        <h3>Vance Revival</h3>
-        <div class="success-tag">Success!</div>
-        <p>We revived the Vance project back in September and after about a year of work we have successfully gotten the project back up on it's feet.</p>
-        <p>Vance is a reimagining of Half-Life 2 from the point of view of the deuteragonist Alyx Vance. In the universe of Vance, Gordon Freeman never returns and is presumed dead, leaving Alyx in his place.</p>
-        <img src="alyxfire.png" alt="Image of Alyx Vance sitting near a fire." style="border-radius: 10px; object-fit: contain; width: 100%;">
-        <a href="https://youtu.be/tv1brkyENcs">View Gameplay</a>
-      </div>
     </div>
-  </div>
 
-  <div class="footer">
-    <div class="content">
-      <p>Social Media Links</p>
-      <a href="https://www.youtube.com/channel/UC6vdNCdvpvc94X168XRqnQg">YouTube</a>
-      <a href="https://twitter.com/lerealqsader">Twitter</a>
-      <a href="https://discord.gg/rrd4zxXzbK">Discord</a>
-      <a href="https://www.guilded.gg/i/EvxQqZDk">Guilded</a>
+    <div class="project-section" id="projects">
+        <div class="content">
+            <h2>Our Projects</h2>
+            <div class="project-card">
+                <h3>Annihilation44</h3>
+                <div class="main-tag">Main!</div>
+                <p>Annihilation44 is an upcoming WW2 game crafted within the powerful Unreal Engine, drawing artistic inspiration from the iconic styles of J.C Leyendecker and Roger Wilkerson. This choice of aesthetic perfectly captures the essence of the WW2 era, allowing players to immerse themselves in its atmosphere.</p>
+                <p>Annihilation44 is being made in collaboration with the creators of Europa The Last Battle to bring unparalleled historical depth as well as immersive story telling to bring an interactive experience like no other.</p>
+                <div class="video-wrapper">
+                    <iframe class="themed-video" src="https://www.youtube.com/embed/MQ4f0o_0zeo" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <a href="https://europathelastbattle.net/">Europa Website</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Etherin</h3>
+                <div class="new-tag">New!</div>
+                <p>Etherin is an Operating System that not only controls every single thing in your home smart or not but it integrates into your life to make every day life easier unlike a smart home. Etherin will run on custom hardware made by us and will have support to run on a variety of different systems in the future. This may include support for retro x86 cpu's.</p>
+                <img src="etherin.png" alt="Image of the Etherin logo." style="border-radius: 10px; object-fit: contain; width: 100%;">
+            </div>
+
+            <div class="project-card">
+                <h3>Vance Revival</h3>
+                <div class="success-tag">Success!</div>
+                <p>We revived the Vance project back in September and after about a year of work we have successfully gotten the project back up on it's feet.</p>
+                <p>Vance is a reimagining of Half-Life 2 from the point of view of the deuteragonist Alyx Vance. In the universe of Vance, Gordon Freeman never returns and is presumed dead, leaving Alyx in his place.</p>
+                <img src="alyxfire.png" alt="Image of Alyx Vance sitting near a fire." style="border-radius: 10px; object-fit: contain; width: 100%;">
+                <a href="https://youtu.be/tv1brkyENcs">View Gameplay</a>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <div class="footer">
+        <div class="content">
+            <p>Social Media Links</p>
+            <a href="https://www.youtube.com/channel/UC6vdNCdvpvc94X168XRqnQg">YouTube</a>
+            <a href="https://twitter.com/lerealqsader">Twitter</a>
+            <a href="https://discord.gg/rrd4zxXzbK">Discord</a>
+            <a href="https://www.guilded.gg/i/EvxQqZDk">Guilded</a>
+        </div>
+    </div>
 </body>
 </html>
