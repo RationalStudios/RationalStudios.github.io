@@ -342,12 +342,12 @@
 
     <div class="crypto-wallet">
         <h3 class="crypto-wallet-heading">Monero (XMR) Wallet ɱ</h3>
-        <a href="#" class="content a copy-button" data-clipboard-text="42iXtoVrrbqVjEScgrzpAnCYWZftA8FX28WEKr7N2ghkbX82YwNsibFKwjxk15sUu68prV61YsANtQBHDut9ZuPGF71AgQz (XMR)">Copy Address</a>
+        <a href="#" class="content a copy-button" data-clipboard-text="42iXtoVrrbqVjEScgrzpAnCYWZftA8FX28WEKr7N2ghkbX82YwNsibFKwjxk15sUu68prV61YsANtQBHDut9ZuPGF71AgQz">Copy Address</a>
     </div>
 
     <div class="crypto-wallet">
         <h3 class="crypto-wallet-heading">Tether (USDT) Wallet ₮</h3>
-        <a href="#" class="content a copy-button" data-clipboard-text="0xe74650f3f04eEc20aa31C54ffd5eD1C01C9B3aDb (USDT)">Copy Address</a>
+        <a href="#" class="content a copy-button" data-clipboard-text="0xe74650f3f04eEc20aa31C54ffd5eD1C01C9B3aDb">Copy Address</a>
     </div>
 
         <p class="crypto-thankyou">Thank you for your generous support!</p>
@@ -362,5 +362,26 @@
             <a href="https://t.me/Annihilation44">Telegram(AN44-News)</a>
         </div>
     </div>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const copyButtons = document.querySelectorAll(".copy-button");
+
+        copyButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                const textToCopy = button.getAttribute("data-clipboard-text");
+                const tempInput = document.createElement("input");
+                tempInput.value = textToCopy;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+
+                alert("Copied to clipboard: " + textToCopy);
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
