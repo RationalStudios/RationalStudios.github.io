@@ -1,442 +1,236 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Rational Studios">
-    <meta property="og:description" content="We are an online software development group that aims to create software such as games as well as other tools.">
-    <meta property="og:url" content="https://rationalstudios.github.io">
-    <meta property="og:image" content="https://rationalstudios.github.io/Rational%20Studios.png">
     <title>Rational Studios</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta property="og:title" content="Rational Studios">
+    <meta property="og:description" content="Official website for Rational Studios.">
+    <meta property="og:image" content="rationallogo.png">
     <style>
-        body {
+        @font-face {
+            font-family: 'Codec-Bold';
+            src: url('Codec-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        body, html {
+            height: 100%;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background: #090909;
-            overflow-y: auto; /* Enable vertical scrolling */
-            padding-top: 60px; /* Add padding top for the navbar */
-        }
-
-        @font-face {
-            font-family: 'codec';
-            src: url('Codec-Bold.ttf');
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 9999;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            background-color: #fff;
-            border-bottom: 2px solid #b61a1a;
-        }
-
-            .navbar ul {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-            }
-
-            .navbar li:not(:last-child) {
-                margin-right: 20px;
-            }
-
-            .navbar li a {
-                display: block;
-                padding: 10px 8px;
-                text-decoration: none;
-                color: #090909;
-                transition: all 0.2s ease;
-                border: 2px solid #b61a1a; /* Set the initial border color */
-            }
-
-            .navbar li a:hover {
-                background-color: #ddd;
-                color: #090909;
-                border-color: #b61a1a; /* Change the border color on hover */
-                transform: scale(1.05);
-            }
-
-            .navbar .logo {
-                font-family: 'codec', Arial, sans-serif;
-                font-size: 30px;
-                color: #090909;
-                letter-spacing: 2px;
-                font-weight: bold;
-                flex: 1;
-                text-align: left;
-            }
-
-        .main-content {
-            position: relative;
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-            background-color: #090909;
-        }
-
-        .content {
-            position: relative;
-            padding: 40px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-            .content h1 {
-                font-size: 36px;
-                margin-bottom: 20px;
-            }
-
-            .content p {
-                font-size: 18px;
-                line-height: 1.5;
-            }
-
-            .content a {
-                display: inline-block;
-                margin-top: 20px;
-                padding: 10px 20px;
-                background-color: #b61a1a;
-                color: #fff;
-                text-decoration: none;
-                transition: all 0.2s ease;
-            }
-
-                .content a:hover {
-                    background-color: #7c1a1a;
-                    transform: scale(1.05);
-                }
-
-                .center {
-                    display: block;
-                    margin-left: auto;
-                    margin-right: auto;
-                    width: 50%;
-                }
-
-                h2 {
-                    text-align: center;
-                }
-
-                h3 {
-                    text-align: center;
-                }
-
-                p {
-                    text-align: center;
-                }
-
-                .crypto-description {
-                    margin-bottom: 20px; /* Add margin to increase space */
-                }
-
-                .crypto-wallet-container {
-                    width: 100%;
-                    box-sizing: border-box;
-                    padding-right: 20px;
-                    display: flex;
-                    justify-content: center;
-                    margin-bottom: 20px; /* Add margin to increase space */
-                }
-
-                .crypto-thankyou {
-                    margin-top: 20px; /* Add margin to increase space */
-                }
-
-                .crypto-wallet-container {
-                    width: 100%;
-                    box-sizing: border-box;
-                    padding-right: 20px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center; /* Center items vertically */
-                    margin-bottom: 20px;
-                }
-
-                .crypto-wallet {
-                    margin-bottom: 20px;
-                    text-align: center; /* Center text horizontally */
-                }
-
-                .copy-button {
-                    display: inline-block;
-                    width: auto; /* Set width to auto to fit content */
-                    margin-top: 10px;
-                    padding: 10px 20px;
-                    background-color: #b61a1a;
-                    color: #fff;
-                    text-decoration: none;
-                    transition: all 0.2s ease;
-                    text-align: center;
-                    box-sizing: border-box;
-                }
-
-                .copy-button:hover {
-                    background-color: #7c1a1a;
-                    transform: scale(1.05);
-                }
-
-        .project-section {
-            padding: 60px 0;
-            background-color: #fff;
-            text-align: center;
-        }
-
-        .project-section {
-            padding: 60px 0;
-            background-image: url('background.jpg');
+            background: url('background.jpg') no-repeat center center fixed;
             background-size: cover;
-            background-position: center;
-            text-align: center;
         }
 
-            .project-section h2 {
-                position: relative;
-                display: inline-block;
-                font-size: 24px;
-                margin-bottom: 30px;
-                padding: 10px 20px;
-                background-color: #b61a1a;
-                color: #fff;
-            }
-
-        .project-card {
-            position: relative;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            background-color: #fff;
+        #container {
+            font-family: 'Codec-Bold', Arial, sans-serif;
+            width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-left: 1px solid #000;
+            border-right: 1px solid #000;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            text-align: left;
-            border-bottom: 4px solid #ddd;
+            min-height: 100%;
+            box-sizing: border-box;
+            position: relative;
         }
 
-            .project-card h3 {
-                font-size: 20px;
-                margin-bottom: 10px;
-            }
+        .header-navigation {
+            font-family: Arial, sans-serif;
+            width: calc(100% + 20px);
+            margin: -20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgb(49 49 49 / 50%);
+            color: #FFF;
+            padding: 1px 10px;
+            position: relative;
+            z-index: 2;
+        }
 
-            .project-card p {
-                font-size: 16px;
-                line-height: 1.5;
-            }
+        .header-navigation span {
+            font-size: 11px;
+            font-weight: bold;
+        }
 
-            .project-card img {
-                max-width: 100%;
-                height: auto;
-                object-fit: contain;
-            }
+        .header-navigation span::after {
+            content: " |";
+            color: #b00606;
+        }
 
-        .footer {
+        .header-navigation a {
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 10px;
+            text-decoration: none;
+            text-decoration: underline;
+            color: #ffffff;
+            cursor: pointer; /* Added to make the link look clickable */
+        }
+
+        .header-navigation a.unclickable {
+            pointer-events: none; /* Added to make the link unclickable */
+            text-decoration: line-through; /* Added to add a line-through style to the text */
+            color: #888888; /* Added to make the unclickable link look different */
+        }
+
+        .header {
+            background-image: url('Header.png');
+            height: 105px;
+            width: calc(100% + 40px);
+            margin: -20px;
+            box-sizing: border-box;
+            z-index: 1;
+            background-size: cover;
+        }
+
+        .content-box {
+            background-color: #dbdbdb;
+            padding: 20px;
+            border-top: 1px solid #000;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            box-sizing: border-box;
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 100%;
+            bottom: 100;
+        }
+
+        .welcome-box,
+        .leadinfo-box {
             background-color: #090909;
             padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #000;
             text-align: center;
-            color: #fff;
-            border-top: 2px solid #b61a1a;
-        }
-
-        /* New Tag Styles */
-        .new-tag {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            transform: rotate(-45deg);
-            background-color: #808080;
-            color: #fff;
-            padding: 5px 15px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        /* Main Tag Styles */
-        .main-tag {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #b61a1a;
-            color: #fff;
-            padding: 5px 15px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        /* Complete Tag Styles */
-        .success-tag {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            transform: rotate(-45deg);
-            background-color: #00abff;
-            color: #fff;
-            padding: 5px 15px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        /* Themed Video Player */
-        .themed-video {
-            width: 100%;
-            overflow: hidden;
-        }
-
-        /* Video Wrapper */
-        .video-wrapper {
+            margin-top: 20px;
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
         }
 
-            /* Video IFrame */
-            .video-wrapper iframe {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
+        .welcome-section h1,
+        .leadinfo-section h1 {
+            font-size: 24px;
+            color: #ffffff;
+        }
 
-        /* Media query for mobile devices */
-        @media (max-width: 600px) {
-            .navbar {
-                padding: 5px 10px;
-            }
+        .welcome-section hr,
+        .leadinfo-section hr {
+            border-top: 1px solid #ffffff;
+            width: 50%;
+            margin: 20px auto;
+        }
 
-                .navbar li:not(:last-child) {
-                    margin-right: 10px;
-                }
+        .welcome-section p,
+        .leadinfo-section p {
+            font-size: 16px;
+            color: #ffffff;
+        }
 
-            .content {
-                padding: 20px;
-            }
+        .slanted-text {
+            transform: skewX(-15deg); /* Adjust the angle as needed */
+            display: inline-block; /* To contain the transformation */
+        }
 
-            .project-section {
-                padding: 30px 0;
-            }
+        .leadinfo-image {
+            width: 200px; /* Adjust the size as needed */
+            border-radius: 6px; /* Same as the box */
+            border: 2px solid #ffffff; /* Black outline */
+            margin: 20px auto;
+            display: block;
+        }
 
-            .project-card {
-                max-width: 100%;
-                margin-bottom: 30px;
-                padding: 20px;
-            }
+        .annihilation44-box,
+        .annihilation44-box {
+            background-color: #090909;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #000;
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+        }
 
-            /* Adjust font sizes for mobile */
-            .content h1 {
-                font-size: 24px;
-            }
+        .annihilation44-section h1,
+        .annihilation44-section h1 {
+            font-size: 24px;
+            color: #ffffff;
+        }
 
-            .content p {
-                font-size: 16px;
-            }
+        .annihilation44-section hr,
+        .annihilation44-section hr {
+            border-top: 1px solid #ffffff;
+            width: 50%;
+            margin: 20px auto;
+        }
 
-            .project-card h3 {
-                font-size: 18px;
-            }
+        .annihilation44-section p,
+        .annihilation44-section p {
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        .annihilation44-image {
+            width: 500px; /* Adjust the size as needed */
+            border-radius: 6px; /* Same as the box */
+            border: 2px solid #ffffff; /* Black outline */
+            margin: 20px auto;
+            display: block;
         }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">Rational Studios</div>
-        <ul>
-            <li><a href="https://rationalstudios.github.io/">Home</a></li>
-            <li><a href="https://rationalstudios.github.io/Contact">Contact</a></li>
-        </ul>
-    </div>
-
-    <div class="main-content">
-        <div class="content">
-            <h1>Welcome to Rational Studios</h1>
-            <p>We are an online software development group that aims to create software such as games as well as other tools. Many Studios aren't very rational, but we're different.</p>
-            <a href="#projects">Learn More</a>
-            <p></p>
-            <img src="rationallogo.png" alt="Image of the Rational Studios logo." class="center" style=" object-fit: contain; width: 30%; border: 2px solid #b61a1a;">
-        </div>
-    </div>
-
-    <div class="project-section" id="projects">
-        <div class="content">
-            <h2>Our Projects</h2>
-            <div class="project-card">
-                <h3>Annihilation44</h3>
-                <div class="main-tag">Main!</div>
-                <p>Annihilation44 is an upcoming WW2 game crafted within the powerful Unreal Engine, drawing artistic inspiration from the iconic styles of J.C Leyendecker and Roger Wilkerson. This choice of aesthetic perfectly captures the essence of the WW2 era, allowing players to immerse themselves in its atmosphere.</p>
-                <img src="an44.png" alt="Image of the Annihilation44 logo." class="center" style=" object-fit: contain; width: 60%; border: 2px solid #b61a1a;">
-                <p>© 2023 Quinlan A. Farias. All Rights Reserved.</p>
-                <!--
-                <div class="video-wrapper">
-                    <iframe class="themed-video" src="" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <a href=""></a>-->
+    <div id="container">
+        <div class="header-navigation">
+            <span>Rational Studios</span>
+            <div>
+                <a href="https://annihilation44.ldrboard.com" target="_blank">Annihilation44</a>
+                <a href="https://discord.gg/yw5PAaY8Pn" target="_blank">Discord</a>
+                <a href="#" class="unclickable">My Account</a>
+                <a href="#" class="unclickable">Sign up</a>
             </div>
         </div>
-    </div>
-  
-    <div class="crypto-donation-section" style="color: #fff;">
-    <div class="content">
-        <h2 class="crypto-heading">Crypto Donations</h2>
-        <p class="crypto-description">Support our projects with cryptocurrency donations by sending your contributions to the following wallets</p>
 
-    <div class="crypto-wallet-container">
-    <div class="crypto-wallet">
-        <h3 class="crypto-wallet-heading">Monero (XMR) Wallet ɱ</h3>
-        <a href="#" class="content a copy-button" data-clipboard-text="42iXtoVrrbqVjEScgrzpAnCYWZftA8FX28WEKr7N2ghkbX82YwNsibFKwjxk15sUu68prV61YsANtQBHDut9ZuPGF71AgQz">Copy Address</a>
-    </div>
-</div>
+        <div class="header">
+        </div>
 
-<div class="crypto-wallet-container">
-    <div class="crypto-wallet">
-        <h3 class="crypto-wallet-heading">Tether (USDT) Wallet ₮</h3>
-        <a href="#" class="content a copy-button" data-clipboard-text="0xe74650f3f04eEc20aa31C54ffd5eD1C01C9B3aDb">Copy Address</a>
-    </div>
-</div>
+        <div class="content-box">
+            <div class="welcome-box">
+                <div class="welcome-section">
+                    <h1>Welcome</h1>
+                    <hr>
+                    <p>Here you can access the official Annihilation44 website, read about us or set up a Rational Studios account to use with Rationality, which is our upcoming launcher for our games and other software. This site is still under construction, and so is the main Annihilation44 page. The Annihilation44 page will be getting online forums soon to chat about the game.</p>
+                </div>
+            </div>
 
-        <p class="crypto-thankyou">Thank you for your generous support!</p>
-        <img src="rationallogoalt.jpg" alt="Image of the Annihilation44 logo." class="center" style=" object-fit: contain; width: 60%; border: 2px solid #b61a1a;">
-    </div>
-</div>
-  
-    <div class="footer">
-        <div class="content">
-            <p>Social Media Links</p>
-            <a href="https://www.youtube.com/channel/UC6vdNCdvpvc94X168XRqnQg">YouTube</a>
-            <a href="https://simplex.chat/contact#/?v=1-4&smp=smp%3A%2F%2Fhejn2gVIqNU6xjtGM3OwQeuk8ZEbDXVJXAlnSBJBWUA%3D%40smp16.simplex.im%2FA8FYPohU761Ley-wcAwToxpnyErNrEdd%23%2F%3Fv%3D1-2%26dh%3DMCowBQYDK2VuAyEAWNxo7qlOkuQPLzvnNHeZcLwcdJymI4OnQPIXPvVgBV4%3D%26srv%3Dp3ktngodzi6qrf7w64mmde3syuzrv57y55hxabqcq3l5p6oi7yzze6qd.onion&data=%7B%22type%22%3A%22group%22%2C%22groupLinkId%22%3A%22jple9AbgCVxJhE7UHsNMwA%3D%3D%22%7D">SimpleX(Chat)</a>
-            <a href="https://discord.gg/yw5PAaY8Pn">Discord(Chat)</a>
+            <div class="leadinfo-box">
+                <div class="leadinfo-section">
+                    <h1>Meet the Founder</h1>
+                    <hr>
+                    <p>My name is Quinlan Farias, I am the lead developer and founder of this studio. If there is anything you need to know about me it is that I first got into software development at the ripe age of 5 when I was gifted a Toshiba Satellite C655 which was the best thing my grandmother could have ever done for me because without that I wouldn't be here doing all of this right now. I develop electronics pcb's, develop software, program robots I build and a whole lot of other things also thanks to an electronics trade I am taking.</p>
+                    <p>Things are going so well I have decided that I am not going to do college. Annihilation44 is going to be our first big project as a studio and we are very excited to be working on it.</p>
+                    <p style="color: #b00606;">If you have any questions or are interested in joining the Annihilation44 team, you can reach me at <a href="mailto:quinlanfab@protonmail.com" style="color: #b00606;">quinlanfab@protonmail.com</a> or via our Discord Server which is linked in the navigation bar.</p>
+                    <img class="leadinfo-image" src="TheMightyQuinn.jpeg" alt="LeadInfo Image">
+                    <p><span class="slanted-text">The blunt isn't real btw but I wish it was.</span></p>
+                </div>
+            </div>
+            
+            <div class="annihilation44-box">
+              <div class="annihilation44-section">
+                      <h1>Annihilation44</h1>
+                      <hr>
+                      <p>Annihilation44 is an upcoming WW2 game crafted within the powerful Unreal Engine, drawing artistic inspiration from the iconic styles of J.C Leyendecker and Roger Wilkerson. This choice of aesthetic perfectly captures the essence of the WW2 era, allowing players to immerse themselves in its atmosphere.</p>
+                      <p>The heart of Annihilation44 lies in its compelling narrative, guiding players through a rich storyline, while also offering a dynamic online multiplayer experience. In the game, you'll step into the shoes of soldiers on both sides of the conflict, each with their own unique journeys, influenced by real-life figures and events of the time.</p>
+                      <p>What sets Annihilation44 apart is its commitment to historical accuracy and unfiltered portrayal.</p>
+                      <img class="annihilation44-image" src="Soldat.png" alt="Annihilation44 Image">
+                  </div>
+              </div>
         </div>
     </div>
-    
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const copyButtons = document.querySelectorAll(".copy-button");
-
-        copyButtons.forEach(function (button) {
-            button.addEventListener("click", function () {
-                const textToCopy = button.getAttribute("data-clipboard-text");
-                const tempInput = document.createElement("input");
-                tempInput.value = textToCopy;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand("copy");
-                document.body.removeChild(tempInput);
-
-                alert("Copied to clipboard: " + textToCopy);
-            });
-        });
-    });
-</script>
-
 </body>
 </html>
