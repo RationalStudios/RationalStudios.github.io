@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +17,8 @@
             font-style: normal;
         }
 
-        body, html {
+        body,
+        html {
             height: 100%;
             margin: 0;
             padding: 0;
@@ -39,6 +41,10 @@
             position: relative;
         }
 
+        .body-text {
+            font-family: Arial, sans-serif;
+        }
+
         .header-navigation {
             font-family: Arial, sans-serif;
             width: calc(100% + 20px);
@@ -58,25 +64,24 @@
             font-weight: bold;
         }
 
-        .header-navigation span::after {
-            content: " |";
-            color: #b00606;
-        }
-
         .header-navigation a {
             font-size: 11px;
             font-weight: bold;
             margin-left: 10px;
             text-decoration: none;
-            text-decoration: underline;
             color: #ffffff;
-            cursor: pointer; /* Added to make the link look clickable */
+            cursor: pointer;
         }
 
         .header-navigation a.unclickable {
-            pointer-events: none; /* Added to make the link unclickable */
-            text-decoration: line-through; /* Added to add a line-through style to the text */
-            color: #888888; /* Added to make the unclickable link look different */
+            pointer-events: none;
+            text-decoration: line-through;
+            color: #888888;
+        }
+
+        .header-navigation a[href="https://annihilation44.ldrboard.com"],
+        .header-navigation a[href="https://discord.gg/yw5PAaY8Pn"] {
+            border-bottom: 1px solid #b00606;
         }
 
         .header {
@@ -104,49 +109,7 @@
         }
 
         .welcome-box,
-        .leadinfo-box {
-            background-color: #090909;
-            padding: 20px;
-            border-radius: 6px;
-            border: 1px solid #000;
-            text-align: center;
-            margin-top: 20px;
-            position: relative;
-        }
-
-        .welcome-section h1,
-        .leadinfo-section h1 {
-            font-size: 24px;
-            color: #ffffff;
-        }
-
-        .welcome-section hr,
-        .leadinfo-section hr {
-            border-top: 1px solid #ffffff;
-            width: 50%;
-            margin: 20px auto;
-        }
-
-        .welcome-section p,
-        .leadinfo-section p {
-            font-size: 16px;
-            color: #ffffff;
-        }
-
-        .slanted-text {
-            transform: skewX(-15deg); /* Adjust the angle as needed */
-            display: inline-block; /* To contain the transformation */
-        }
-
-        .leadinfo-image {
-            width: 200px; /* Adjust the size as needed */
-            border-radius: 6px; /* Same as the box */
-            border: 2px solid #ffffff; /* Black outline */
-            margin: 20px auto;
-            display: block;
-        }
-
-        .annihilation44-box,
+        .leadinfo-box,
         .annihilation44-box {
             background-color: #090909;
             padding: 20px;
@@ -157,34 +120,45 @@
             position: relative;
         }
 
-        .annihilation44-section h1,
+        .welcome-section h1,
+        .leadinfo-section h1,
         .annihilation44-section h1 {
             font-size: 24px;
             color: #ffffff;
         }
 
-        .annihilation44-section hr,
+        .welcome-section hr,
+        .leadinfo-section hr,
         .annihilation44-section hr {
             border-top: 1px solid #ffffff;
             width: 50%;
             margin: 20px auto;
         }
 
+        .welcome-section p,
+        .leadinfo-section p,
         .annihilation44-section p,
-        .annihilation44-section p {
+        .body-text {
             font-size: 16px;
             color: #ffffff;
         }
 
+        .slanted-text {
+            transform: skewX(-15deg);
+            display: inline-block;
+        }
+
+        .leadinfo-image,
         .annihilation44-image {
-            width: 500px; /* Adjust the size as needed */
-            border-radius: 6px; /* Same as the box */
-            border: 2px solid #ffffff; /* Black outline */
+            width: 300px;
+            border-radius: 6px;
+            border: 2px solid #ffffff;
             margin: 20px auto;
             display: block;
         }
     </style>
 </head>
+
 <body>
     <div id="container">
         <div class="header-navigation">
@@ -205,7 +179,7 @@
                 <div class="welcome-section">
                     <h1>Welcome</h1>
                     <hr>
-                    <p>Here you can access the official Annihilation44 website, read about us or set up a Rational Studios account to use with Rationality, which is our upcoming launcher for our games and other software. This site is still under construction, and so is the main Annihilation44 page. The Annihilation44 page will be getting online forums soon to chat about the game.</p>
+                    <p class="body-text">Here you can access the official Annihilation44 website, read about us or set up a Rational Studios account to use with Rationality, which is our upcoming launcher for our games and other software. This site is still under construction, and so is the main Annihilation44 page. The Annihilation44 page will be getting online forums soon to chat about the game.</p>
                 </div>
             </div>
 
@@ -213,25 +187,26 @@
                 <div class="leadinfo-section">
                     <h1>Meet the Founder</h1>
                     <hr>
-                    <p>My name is Quinlan Farias, I am the lead developer and founder of this studio. If there is anything you need to know about me it is that I first got into software development at the ripe age of 5 when I was gifted a Toshiba Satellite C655 which was the best thing my grandmother could have ever done for me because without that I wouldn't be here doing all of this right now. I develop electronics pcb's, develop software, program robots I build and a whole lot of other things also thanks to an electronics trade I am taking.</p>
-                    <p>Things are going so well I have decided that I am not going to do college. Annihilation44 is going to be our first big project as a studio and we are very excited to be working on it.</p>
-                    <p style="color: #b00606;">If you have any questions or are interested in joining the Annihilation44 team, you can reach me at <a href="mailto:quinlanfab@protonmail.com" style="color: #b00606;">quinlanfab@protonmail.com</a> or via our Discord Server which is linked in the navigation bar.</p>
+                    <p class="body-text">My name is Quinlan Farias, I am the lead developer and founder of this studio. If there is anything you need to know about me it is that I first got into software development at the ripe age of 5 when I was gifted a Toshiba Satellite C655 which was the best thing my grandmother could have ever done for me because without that I wouldn't be here doing all of this right now. I develop electronics pcb's, develop software, program robots I build and a whole lot of other things also thanks to an electronics trade I am taking.</p>
+                    <p class="body-text">Things are going so well I have decided that I am not going to do college. Annihilation44 is going to be our first big project as a studio and we are very excited to be working on it.</p>
+                    <p>If you have any questions or are interested in joining the Annihilation44 team, you can reach me at <a href="mailto:quinlanfab@protonmail.com" style="color: #b00606; text-decoration: none;">quinlanfab@protonmail.com</a> or via our Discord Server which is linked in the navigation bar.</p>
                     <img class="leadinfo-image" src="TheMightyQuinn.jpeg" alt="LeadInfo Image">
                     <p><span class="slanted-text">The blunt isn't real btw but I wish it was.</span></p>
                 </div>
             </div>
-            
+
             <div class="annihilation44-box">
-              <div class="annihilation44-section">
-                      <h1>Annihilation44</h1>
-                      <hr>
-                      <p>Annihilation44 is an upcoming WW2 game crafted within the powerful Unreal Engine, drawing artistic inspiration from the iconic styles of J.C Leyendecker and Roger Wilkerson. This choice of aesthetic perfectly captures the essence of the WW2 era, allowing players to immerse themselves in its atmosphere.</p>
-                      <p>The heart of Annihilation44 lies in its compelling narrative, guiding players through a rich storyline, while also offering a dynamic online multiplayer experience. In the game, you'll step into the shoes of soldiers on both sides of the conflict, each with their own unique journeys, influenced by real-life figures and events of the time.</p>
-                      <p>What sets Annihilation44 apart is its commitment to historical accuracy and unfiltered portrayal.</p>
-                      <img class="annihilation44-image" src="Soldat.png" alt="Annihilation44 Image">
-                  </div>
-              </div>
+                <div class="annihilation44-section">
+                    <h1>Annihilation44</h1>
+                    <hr>
+                    <p class="body-text">Annihilation44 is an upcoming WW2 game crafted within the powerful Unreal Engine, drawing artistic inspiration from the iconic styles of J.C Leyendecker and Roger Wilkerson. This choice of aesthetic perfectly captures the essence of the WW2 era, allowing players to immerse themselves in its atmosphere.</p>
+                    <p class="body-text">The heart of Annihilation44 lies in its compelling narrative, guiding players through a rich storyline, while also offering a dynamic online multiplayer experience. In the game, you'll step into the shoes of soldiers on both sides of the conflict, each with their own unique journeys, influenced by real-life figures and events of the time.</p>
+                    <p class="body-text">What sets Annihilation44 apart is its commitment to historical accuracy and unfiltered portrayal.</p>
+                    <img class="annihilation44-image" src="Soldat.png" alt="Annihilation44 Image">
+                </div>
+            </div>
         </div>
     </div>
 </body>
+
 </html>
