@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ethrin</title>
+    <style>
+        body {
+            margin: 0;
+            background-image: url('EthrinBG.png');
+            color: #ffffff;
+            font-family: "DOS", Arial, sans-serif;
+            background-size: 300px 300px;
+            image-rendering: pixelated;
+        }
+
+        @font-face {
+            font-family: "DOS";
+            src: url('DOS.ttf') format('truetype');
+        }
+
+        #main-container {
+            position: relative;
+            max-width: 800px;
+        }
+
+        #logo {
+            max-width: 200px;
+            border: 2px dashed #ffffff;
+            max-width: 600px;
+            margin-left: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        #title {
+            font-size: 20px;
+            margin-top: 30px;
+            text-decoration: underline;
+            text-shadow: 2px 2px 2px #000000;
+            image-rendering: pixelated;
+            font-smooth: never;
+            max-width: 600px;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            position: relative;
+            text-shadow: 1px 1px 1px #000000;
+            image-rendering: pixelated;
+            font-smooth: never;
+            max-width: 600px;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: #ffffff;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main-container">
+        <img id="logo" src="EthrinLogo.png" alt="Ethrin Logo">
+        <div id="title">Welcome to the ethrin web page!</div>
+        <p>ethrin is an open source x86_64 operating system and kernel built from the ground up that serves a primary purpose to interface with electronics and robotics hardware that is to be grown into a fully functioning y2k desktop operating system for modern hardware.<span class="cursor"></span></p>
+	<p>Links: <a href="https://github.com/RationalStudios/ethrin" style="color: #ac00a4;">Github</a> <a href="https://discord.gg/yw5PAaY8Pn" style="color: #ac00a4;">Discord</a></p>
+    </div>
+
+    <canvas id="sineWaveCanvas" width="800" height="200"></canvas>
+
+    <script>
+    var canvas = document.getElementById('sineWaveCanvas');
+    var context = canvas.getContext('2d');
+
+    var amplitude = 30;
+    var frequency = 0.02;
+    var phase = 0;
+    var speed = 0.030;
+
+    var pixelSize = 10;
+
+    context.imageSmoothingEnabled = false;
+
+    function animateSineWave() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (var x = 0; x < canvas.width; x += pixelSize) {
+            var y = amplitude * Math.sin(frequency * x + phase);
+            context.fillStyle = '#00ac00';
+            context.fillRect(x, canvas.height / 2 + y, pixelSize, pixelSize);
+        }
+
+        phase += speed;
+
+        requestAnimationFrame(animateSineWave);
+    }
+
+    animateSineWave();
+    </script>
+
+</body>
+
+</html>
