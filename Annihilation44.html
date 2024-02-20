@@ -8,21 +8,93 @@
     <meta property="og:title" content="Annihilation44">
     <meta property="og:description" content="The official home of Annihilation44.">
     <meta property="og:image" content="https://www.rationalstudios.org/an44/images/an44.png">
-    <title>Annihilation44</title>
     <style>
+        @font-face {
+            font-family: 'Codec-Bold';
+            src: url('fonts/Codec-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
         body {
+	    height: 100%;
             margin: 0;
             padding: 0;
-            background-image: url('an44/images/AN44BG.png');
-            background-size: cover;
+            background: url('an44/images/AN44BG.png') no-repeat center center fixed;
+            background-size: 100% 100%;
             background-position: center;
-            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: 'Codec-Bold', Arial, sans-serif;
+        }
+
+        .content-box {
+            background-color: rgba(9, 9, 9, 0.9);
+            padding: 20px;
+            max-width: 800px;
+            width: calc(100% - 40px);
+            position: relative;
+            top: 50px;
+            color: white;
+            margin: 0; 
+            font-size: 14px;
+        }
+
+        .content-box-text {
+            font-family: Arial, sans-serif;
+        }
+
+       .top-bar {
+            background-color: #1e1e1e;
+            border: 1px solid #445048;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            position: absolute;
+            top: -30px;
+            left: 0;
+            right: 0;
+        }
+
+        .top-bar h2 {
+            color: white;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .character-image {
+            position: fixed;
+            top: 70%;
+            left: 90%;
+            transform: translate(-10%, -10%);
+            width: 350px;
+            height: auto;
+            z-index: 2;
+            animation: sway 2s infinite alternate; 
+        }
+
+        @keyframes sway {
+            to {
+                transform: translateX(10px);
+            }
         }
     </style>
 </head>
 <body>
 
+    <div class="content-box">
+        <div class="top-bar">
+            <h2>Annihilation44</h2>
+        </div>
+        <p class="content-box-text">Annihilation44 is an upcoming WW2 game crafted within the powerful Unreal Engine, drawing artistic inspiration from the iconic styles of J.C Leyendecker and Roger Wilkerson. This choice of aesthetic perfectly captures the essence of the WW2 era, allowing players to immerse themselves in its atmosphere.</p>
+        <p class="content-box-text">The heart of Annihilation44 lies in its compelling narrative, guiding players through a rich storyline, while also offering a dynamic online multiplayer experience. In the game, you'll step into the shoes of soldiers on both sides of the conflict, each with their own unique journeys, influenced by real-life figures and events of the time.</p>
+        <p class="content-box-text">What sets Annihilation44 apart is its commitment to historical accuracy and unfiltered portrayal. The game doesn't shy away from the complexities of the era, avoiding demonization of any side and presenting an unadulterated perspective. As a result, Annihilation44 is designed for mature audiences who seek an authentic and immersive WW2 gaming experience.</p>
+    </div>
 
+    <img src="an44/images/Hans.png" alt="Hans" class="character-image">
 
 </body>
 </html>
