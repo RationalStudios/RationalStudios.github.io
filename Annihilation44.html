@@ -45,7 +45,7 @@
             font-family: Arial, sans-serif;
         }
 
-       .top-bar {
+        .top-bar {
             background-color: #1e1e1e;
             border: 1px solid #445048;
             height: 30px;
@@ -58,6 +58,12 @@
             left: 0;
             right: 0;
         }
+
+        .dashed-line {
+            border: none;
+            border-top: 1px dashed #445048;
+            margin-top: 10px;
+        } 
 
         .top-bar h2 {
             color: white;
@@ -76,6 +82,16 @@
             animation: sway 2s infinite alternate; 
         }
 
+	.tommy-gun {
+  	    position: fixed;
+            top: 90%;
+  	    left: 10%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: auto;
+            z-index: 2;
+        }
+
         @keyframes sway {
             to {
                 transform: translateX(10px);
@@ -92,9 +108,28 @@
         <p class="content-box-text">Annihilation44 is an upcoming WW2 game crafted within the powerful Unreal Engine, drawing artistic inspiration from the iconic styles of J.C Leyendecker and Roger Wilkerson. This choice of aesthetic perfectly captures the essence of the WW2 era, allowing players to immerse themselves in its atmosphere.</p>
         <p class="content-box-text">The heart of Annihilation44 lies in its compelling narrative, guiding players through a rich storyline, while also offering a dynamic online multiplayer experience. In the game, you'll step into the shoes of soldiers on both sides of the conflict, each with their own unique journeys, influenced by real-life figures and events of the time.</p>
         <p class="content-box-text">What sets Annihilation44 apart is its commitment to historical accuracy and unfiltered portrayal. The game doesn't shy away from the complexities of the era, avoiding demonization of any side and presenting an unadulterated perspective. As a result, Annihilation44 is designed for mature audiences who seek an authentic and immersive WW2 gaming experience.</p>
+	<hr class="dashed-line">
     </div>
 
     <img src="an44/images/Hans.png" alt="Hans" class="character-image">
+    <img class="tommy-gun" id="tommy" src="an44/images/Tommy.png" alt="Tommy Gun">
 
+    <script>
+    const tommyGun = document.getElementById('tommy');
+
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      const tommyRect = tommyGun.getBoundingClientRect();
+      const tommyX = tommyRect.left + tommyRect.width / 2;
+      const tommyY = tommyRect.top + tommyRect.height / 2;
+
+      const angle = Math.atan2(mouseY - tommyY, mouseX - tommyX);
+      const angleDeg = angle * (180 / Math.PI);
+
+      tommyGun.style.transform = `translate(-50%, -50%) rotate(${angleDeg}deg)`;
+    });
+  </script>
 </body>
 </html>
